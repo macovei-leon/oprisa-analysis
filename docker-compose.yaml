@@ -1,0 +1,7 @@
+services:
+  fleetcap-dashboard:
+    build: .
+    container_name: fleetcap-container
+    ports:
+      - "8089:8089"
+    restart: always

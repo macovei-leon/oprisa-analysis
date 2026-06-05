@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLEETCAP: Driver Capacity Prediction Model</title>
+  <!-- Google Fonts Outfit & JetBrains Mono for formulas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f1f5f9;
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --card-border: rgba(0, 0, 0, 0.08);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      
+      /* Capacity Colors adapted for Light Mode (Vivid contrast for high visibility) */
+      --color-green-bg: #c6f6d5;
+      --color-green-border: #48bb78;
+      --color-green-text: #1a5235;
+      
+      --color-red-bg: #fed7d7;
+      --color-red-border: #f56565;
+      --color-red-text: #742a2a;
+      
+      --accent-color: #2563eb;
+      --accent-hover: #1d4ed8;
+      
+      --font-sans: 'Outfit', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 24px;
+      line-height: 1.5;
+    }
+
+    /* Background decorative gradients in light mode */
+    .glow-bg {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.06) 0%, rgba(241, 245, 249, 0) 70%);
+      top: -100px;
+      left: -100px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .glow-bg-right {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(147, 51, 234, 0.04) 0%, rgba(241, 245, 249, 0) 70%);
+      bottom: -100px;
+      right: -100px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(12px);
+      padding: 24px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .brand h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .control-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    select, button, .toggle-container, input[type="number"] {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      color: var(--text-main);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    }
+
+    select:hover, select:focus {
+      border-color: var(--accent-color);
+      background: #fafafa;
+    }
+
+    .week-selector {
+      display: flex;
+      background: rgba(0, 0, 0, 0.04);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .week-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 8px;
+      box-shadow: none;
+      transition: all 0.2s ease;
+    }
+
+    .week-btn.active {
+      background: var(--accent-color);
+      color: white;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+    }
+
+    .week-btn:hover:not(.active) {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    .toggle-container {
+      display: flex;
+      padding: 4px;
+      gap: 4px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: none;
+    }
+
+    .toggle-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 6px;
+      box-shadow: none;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-btn.active {
+      background: #ffffff;
+      color: var(--text-main);
+      font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    /* Warning Banner for Simulation */
+    .banner {
+      background: #fffbeb;
+      border: 1px solid #f59e0b;
+      color: #b45309;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.05);
+    }
+
+    /* Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .metric-header {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .metric-value {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .metric-sub {
+      font-size: 13px;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .metric-sub.positive { color: var(--color-green-text); }
+    .metric-sub.negative { color: var(--color-red-text); }
+    .metric-sub.warning { color: #d97706; }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(0, 0, 0, 0.06);
+      border-radius: 3px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--accent-color);
+      border-radius: 3px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    /* Recommendation Card styling */
+    .recommendation-card {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+    }
+
+    @media (max-width: 1024px) {
+      .recommendation-card {
+        grid-column: span 1;
+      }
+    }
+
+    /* Dashboard Layout */
+    .dashboard-container {
+      display: flex;
+      gap: 24px;
+      position: relative;
+    }
+
+    .grid-container {
+      flex: 1;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      max-height: 750px;
+      overflow: auto;
+      position: relative;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 4px;
+      table-layout: fixed;
+    }
+
+    th {
+      background: #f8fafc;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 13px;
+      padding: 12px 6px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+    }
+
+    th.time-header, td.time-cell {
+      position: sticky;
+      left: 0;
+      background: #f8fafc;
+      width: 90px;
+      z-index: 5;
+      text-align: center;
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-right: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    th.time-header {
+      z-index: 11;
+    }
+
+    td {
+      padding: 0;
+      height: 40px;
+    }
+
+    .slot-cell {
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+      user-select: none;
+    }
+
+    .slot-cell.sufficient {
+      background-color: var(--color-green-bg);
+      border-color: var(--color-green-border);
+      color: var(--color-green-text);
+    }
+
+    .slot-cell.insufficient {
+      background-color: var(--color-red-bg);
+      border-color: var(--color-red-border);
+      color: var(--color-red-text);
+    }
+
+    .slot-cell:hover {
+      filter: contrast(1.1) brightness(0.98);
+      transform: scale(1.03);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      z-index: 2;
+    }
+
+    .slot-cell.active-cell {
+      border: 2px solid #0f172a !important;
+      box-shadow: 0 0 12px rgba(15, 23, 42, 0.25);
+    }
+
+    /* Sliding Panel (Drawer) in light mode */
+    .auditor-panel {
+      width: 420px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      height: fit-content;
+      max-height: 750px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transform: translateX(0);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .auditor-panel.closed {
+      display: none;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding-bottom: 16px;
+    }
+
+    .panel-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .close-panel-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      padding: 4px;
+      border-radius: 4px;
+      transition: color 0.2s;
+    }
+
+    .close-panel-btn:hover {
+      color: var(--text-main);
+    }
+
+    .panel-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+      font-size: 14px;
+    }
+
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      color: var(--text-muted);
+    }
+
+    .detail-val {
+      font-weight: 500;
+    }
+
+    .detail-val.highlight {
+      font-weight: 600;
+    }
+
+    .detail-val.green { color: var(--color-green-text); }
+    .detail-val.red { color: var(--color-red-text); }
+
+    /* Math Box styling */
+    .math-box {
+      background: #f8fafc;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    .math-formula {
+      color: #0284c7;
+      font-weight: 600;
+      margin-bottom: 6px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding-bottom: 4px;
+    }
+
+    .math-step {
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .math-result {
+      color: #e11d48;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .math-result.sufficient-result {
+      color: #166534;
+    }
+
+    .explanation-box {
+      font-size: 13.5px;
+      background: rgba(37, 99, 235, 0.04);
+      border-left: 3px solid var(--accent-color);
+      padding: 12px;
+      border-radius: 0 8px 8px 0;
+      color: #1e293b;
+    }
+
+    .placeholder-panel {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .placeholder-icon {
+      font-size: 32px;
+      opacity: 0.7;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.12);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-bg"></div>
+  <div class="glow-bg-right"></div>
+
+  <header>
+    <div class="brand">
+      <h1>⚡ FLEETCAP</h1>
+      <p>Driver Capacity Prediction & Staffing Auditor • May-June 2026</p>
+    </div>
+    <div class="controls">
+      <div class="control-group">
+        <span class="control-label">City</span>
+        <select id="city-selector">
+          <!-- Dynamically populated -->
+        </select>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">Forecast Week</span>
+        <div class="week-selector" id="week-selector">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">Productivity Baseline (orders/hr)</span>
+        <input type="number" id="productivity-input" value="2.00" step="0.05" min="0.1" max="10.0" style="width: 110px; font-family: inherit;">
+      </div>
+    </div>
+  </header>
+
+  <!-- Warning Banner -->
+  <div class="banner" id="forecast-warning-banner">
+    <span style="font-size: 20px;">⚠️</span>
+    <div id="banner-text">Warning Text</div>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-header">Forecasted Orders (Demand)</div>
+      <div class="metric-value" id="stat-forecast-demand">0</div>
+      <div class="metric-sub" id="stat-forecast-date-range">dates</div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-header">Estimated Capacity (Deliveries)</div>
+      <div class="metric-value" id="stat-estimated-capacity">0</div>
+      <div class="metric-sub" id="stat-productivity-rate">Rate info</div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-header">Surplus / Shortage</div>
+      <div class="metric-value" id="stat-net-surplus">0</div>
+      <div class="metric-sub" id="stat-net-surplus-status">Status</div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-header">Hiring & Staff Deficit</div>
+      <div class="metric-value" id="stat-hiring-deficit">0 Drivers</div>
+      <div class="metric-sub" id="stat-hiring-sub">0 deliveries deficit</div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-header">Max Driver Needed (Weekly Peak)</div>
+      <div class="metric-value" id="stat-max-drivers">0 Drivers</div>
+      <div class="metric-sub" id="stat-max-drivers-time">Peak slot info</div>
+    </div>
+
+    <div class="metric-card recommendation-card">
+      <div class="metric-header" style="color: #2563eb;">💡 Weekly Operations Recommendation</div>
+      <div class="metric-value" style="font-size: 16px; font-weight: 500; letter-spacing: 0; line-height: 1.45; margin-top: 8px; color: #1e293b;" id="stat-staffing-rec">
+        Calculating recommendation...
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendar Table and Auditor Panel -->
+  <div class="dashboard-container">
+    <div class="grid-container">
+      <table id="calendar-grid">
+        <thead>
+          <tr id="grid-header-row"></tr>
+        </thead>
+        <tbody id="grid-body"></tbody>
+      </table>
+    </div>
+
+    <!-- Auditing Side-Drawer Panel -->
+    <div class="auditor-panel" id="auditor-panel">
+      <!-- Default state -->
+      <div class="placeholder-panel" id="panel-placeholder">
+        <div class="placeholder-icon">📊</div>
+        <h3>Select a Time Slot</h3>
+        <p>Click any cell in the calendar grid to view detailed calculations, mathematical formulas, and historical audit logs.</p>
+      </div>
+
+      <!-- Detail contents -->
+      <div class="panel-content" id="panel-content" style="display: none;">
+        <div class="panel-header">
+          <div>
+            <h2 id="panel-title-time">Slot Details</h2>
+            <span id="panel-title-date" style="font-size: 13px; color: var(--text-muted);">Monday, June 01</span>
+          </div>
+          <button class="close-panel-btn" id="close-panel-btn">×</button>
+        </div>
+
+        <div>
+          <div class="panel-section-title">Operational metrics</div>
+          <div class="detail-row">
+            <span class="detail-label">Forecasted Demand (June)</span>
+            <span class="detail-val highlight" id="panel-val-demand">0</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Historical Completions (May)</span>
+            <span class="detail-val" id="panel-val-historical-completions">0</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Estimated Active Drivers</span>
+            <span class="detail-val highlight" id="panel-val-active-drivers">0</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Total Delivery Capacity</span>
+            <span class="detail-val" id="panel-val-capacity">0</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Capacity Net Balance</span>
+            <span class="detail-val highlight" id="panel-val-balance">0</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Drivers Needed</span>
+            <span class="detail-val" id="panel-val-drivers-needed">0</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Capacity Utilization</span>
+            <span class="detail-val highlight" id="panel-val-utilization">0%</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel-section-title">Mathematical audit path</div>
+          <div class="math-box" id="panel-math-box"></div>
+        </div>
+
+        <div>
+          <div class="panel-section-title">Explanation</div>
+          <div class="explanation-box" id="panel-explanation-text"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // State Management
+    let appData = null;
+    let currentCity = 'Berlin';
+    let currentWeekIdx = 0; // 0-indexed (Week 1 = 0)
+    let currentProductivity = 2.0;
+    let activeCellId = null;
+
+    const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    const TIME_SLOTS = [];
+    for (let h = 0; h < 24; h++) {
+      const hStr = h.toString().padStart(2, '0');
+      TIME_SLOTS.push(`${hStr}:00`);
+      TIME_SLOTS.push(`${hStr}:30`);
+    }
+
+    // DOM Elements
+    const citySelector = document.getElementById('city-selector');
+    const weekSelector = document.getElementById('week-selector');
+    const productivityInput = document.getElementById('productivity-input');
+    const forecastWarningBanner = document.getElementById('forecast-warning-banner');
+    const bannerText = document.getElementById('banner-text');
+
+    const statForecastDemand = document.getElementById('stat-forecast-demand');
+    const statForecastDateRange = document.getElementById('stat-forecast-date-range');
+    const statEstimatedCapacity = document.getElementById('stat-estimated-capacity');
+    const statProductivityRate = document.getElementById('stat-productivity-rate');
+    const statNetSurplus = document.getElementById('stat-net-surplus');
+    const statNetSurplusStatus = document.getElementById('stat-net-surplus-status');
+    const statHiringDeficit = document.getElementById('stat-hiring-deficit');
+    const statHiringSub = document.getElementById('stat-hiring-sub');
+    const statMaxDrivers = document.getElementById('stat-max-drivers');
+    const statMaxDriversTime = document.getElementById('stat-max-drivers-time');
+    const statStaffingRec = document.getElementById('stat-staffing-rec');
+
+    const gridHeaderRow = document.getElementById('grid-header-row');
+    const gridBody = document.getElementById('grid-body');
+
+    const auditorPanel = document.getElementById('auditor-panel');
+    const panelPlaceholder = document.getElementById('panel-placeholder');
+    const panelContent = document.getElementById('panel-content');
+    const closePanelBtn = document.getElementById('close-panel-btn');
+
+    const panelTitleTime = document.getElementById('panel-title-time');
+    const panelTitleDate = document.getElementById('panel-title-date');
+    const panelValDemand = document.getElementById('panel-val-demand');
+    const panelValHistoricalCompletions = document.getElementById('panel-val-historical-completions');
+    const panelValActiveDrivers = document.getElementById('panel-val-active-drivers');
+    const panelValCapacity = document.getElementById('panel-val-capacity');
+    const panelValBalance = document.getElementById('panel-val-balance');
+    const panelValDriversNeeded = document.getElementById('panel-val-drivers-needed');
+    const panelValUtilization = document.getElementById('panel-val-utilization');
+    const panelMathBox = document.getElementById('panel-math-box');
+    const panelExplanationText = document.getElementById('panel-explanation-text');
+
+    // Load Preprocessed Data
+    async function loadData() {
+      try {
+        const response = await fetch('dashboard_data.json');
+        appData = await response.json();
+        initDashboard();
+      } catch (err) {
+        console.error("Error loading data:", err);
+        alert("Failed to load dashboard_data.json. Please ensure your python preprocess script was run and the local web server is running.");
+      }
+    }
+
+    function initDashboard() {
+      // 1. Populate Cities
+      citySelector.innerHTML = '';
+      appData.cities.forEach(city => {
+        const opt = document.createElement('option');
+        opt.value = city;
+        opt.textContent = city;
+        if (city === 'Berlin') opt.selected = true;
+        citySelector.appendChild(opt);
+      });
+
+      // 2. Render Week Selector Buttons
+      renderWeekSelector();
+
+      // 3. Bind Event Listeners
+      citySelector.addEventListener('change', (e) => {
+        currentCity = e.target.value;
+        closeAuditor();
+        updateDashboard();
+      });
+
+      productivityInput.addEventListener('input', (e) => {
+        const val = parseFloat(e.target.value);
+        if (!isNaN(val) && val > 0) {
+          currentProductivity = val;
+          updateDashboard();
+          if (activeCellId) {
+            const [wday, slotTime] = activeCellId.split('|');
+            showCellAudit(wday, slotTime);
+          }
+        }
+      });
+
+      closePanelBtn.addEventListener('click', closeAuditor);
+
+      // Initial Update
+      updateDashboard();
+    }
+
+    function renderWeekSelector() {
+      weekSelector.innerHTML = '';
+      const berlinWeeks = appData.forecasts['Berlin'];
+      berlinWeeks.forEach((week, idx) => {
+        const btn = document.createElement('button');
+        btn.classList.add('week-btn');
+        if (idx === 0) btn.classList.add('active');
+        btn.dataset.index = idx;
+        
+        const monDate = week.days['Monday'].date;
+        const sunDate = week.days['Sunday'].date;
+        
+        const formatShortDate = (dStr) => {
+          const parts = dStr.split('-');
+          return `${parts[2]}.${parts[1]}`;
+        };
+        
+        btn.textContent = `W${idx+1} (${formatShortDate(monDate)} - ${formatShortDate(sunDate)})`;
+        
+        btn.addEventListener('click', () => {
+          Array.from(weekSelector.children).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentWeekIdx = parseInt(btn.dataset.index);
+          closeAuditor();
+          updateDashboard();
+        });
+        
+        weekSelector.appendChild(btn);
+      });
+    }
+
+    function getActiveDrivers(city, weekday, timeSlot) {
+      const profile = appData.historical_profiles[city];
+      if (profile && profile[weekday] && profile[weekday][timeSlot]) {
+        return profile[weekday][timeSlot].active_drivers_mean;
+      }
+      return 0.0;
+    }
+
+    function getHistoricalCompletions(city, weekday, timeSlot) {
+      const profile = appData.historical_profiles[city];
+      if (profile && profile[weekday] && profile[weekday][timeSlot]) {
+        return profile[weekday][timeSlot].deliveries_mean;
+      }
+      return 0.0;
+    }
+
+    function getCityHistoricalVolume(city) {
+      const profile = appData.historical_profiles[city];
+      if (!profile) return 0;
+      let sum = 0;
+      for (const day in profile) {
+        for (const slot in profile[day]) {
+          sum += profile[day][slot].deliveries_mean;
+        }
+      }
+      return sum;
+    }
+
+    function getForecastDemand(city, weekIdx, weekday, timeSlot) {
+      if (city === 'Berlin') {
+        const week = appData.forecasts['Berlin'][weekIdx];
+        if (week && week.days[weekday]) {
+          return week.days[weekday].slots[timeSlot] || 0;
+        }
+      } else {
+        // Scale Berlin forecast to other cities using their historical ratios
+        const cityCompletions = getCityHistoricalVolume(city);
+        const berlinCompletions = getCityHistoricalVolume('Berlin');
+        const ratio = berlinCompletions > 0 ? (cityCompletions / berlinCompletions) : 0;
+        
+        const berlinWeek = appData.forecasts['Berlin'][weekIdx];
+        if (berlinWeek && berlinWeek.days[weekday]) {
+          const berlinVal = berlinWeek.days[weekday].slots[timeSlot] || 0;
+          return Math.round(berlinVal * ratio);
+        }
+      }
+      return 0;
+    }
+
+    function closeAuditor() {
+      auditorPanel.classList.add('closed');
+      panelPlaceholder.style.display = 'flex';
+      panelContent.style.display = 'none';
+      if (activeCellId) {
+        const activeCell = document.getElementById(activeCellId);
+        if (activeCell) activeCell.classList.remove('active-cell');
+        activeCellId = null;
+      }
+    }
+
+    function updateDashboard() {
+      // Toggle banner
+      if (currentCity !== 'Berlin') {
+        forecastWarningBanner.style.display = 'flex';
+        const cityCompletions = getCityHistoricalVolume(currentCity);
+        const berlinCompletions = getCityHistoricalVolume('Berlin');
+        const factor = berlinCompletions > 0 ? ((cityCompletions / berlinCompletions) * 100).toFixed(1) : 0;
+        bannerText.textContent = `⚠️ June Forecast not uploaded for ${currentCity}. Dashboard displays simulated forecast by scaling Berlin's profile (factor: ${factor}%).`;
+      } else {
+        forecastWarningBanner.style.display = 'none';
+      }
+
+      // Compute Weekly aggregates
+      const selectedWeek = appData.forecasts['Berlin'][currentWeekIdx];
+      const monDate = selectedWeek.days['Monday'].date;
+      const sunDate = selectedWeek.days['Sunday'].date;
+      statForecastDateRange.textContent = `${monDate} to ${sunDate}`;
+      statProductivityRate.textContent = `At ${currentProductivity.toFixed(2)} deliveries/hr per active driver`;
+
+      let totalForecastDemand = 0;
+      let totalEstimatedCapacity = 0;
+      let totalShortageSlots = 0;
+      let totalSurplusVolume = 0;
+      let totalDeficitVolume = 0;
+      let totalDeficitDriverHours = 0;
+      const peakShortages = [];
+
+      let maxWeeklyDrivers = 0;
+      let maxWeeklyDriversDay = '';
+      let maxWeeklyDriversSlot = '';
+
+      WEEKDAYS.forEach(day => {
+        TIME_SLOTS.forEach(slot => {
+          const demand = getForecastDemand(currentCity, currentWeekIdx, day, slot);
+          const activeDrivers = getActiveDrivers(currentCity, day, slot);
+          const p30 = currentProductivity * 0.5;
+          const capacity = activeDrivers * p30;
+
+          totalForecastDemand += demand;
+          totalEstimatedCapacity += capacity;
+
+          // Peak weekly drivers needed (Total required, not just additional)
+          const reqDrivers = demand / p30;
+          if (reqDrivers > maxWeeklyDrivers) {
+            maxWeeklyDrivers = reqDrivers;
+            maxWeeklyDriversDay = day;
+            maxWeeklyDriversSlot = slot;
+          }
+
+          const diff = capacity - demand;
+          if (diff < 0) {
+            totalShortageSlots++;
+            const deficitVal = Math.abs(diff);
+            totalDeficitVolume += deficitVal;
+            const drvDeficit = Math.ceil(deficitVal / p30);
+            totalDeficitDriverHours += drvDeficit * 0.5;
+            peakShortages.push({ day, slot, deficit: deficitVal, drvNeeded: drvDeficit });
+          } else {
+            totalSurplusVolume += diff;
+          }
+        });
+      });
+
+      // Find max concurrent driver deficit (hiring count)
+      let maxDeficitDrivers = 0;
+      if (peakShortages.length > 0) {
+        peakShortages.forEach(p => {
+          if (p.drvNeeded > maxDeficitDrivers) {
+            maxDeficitDrivers = p.drvNeeded;
+          }
+        });
+      }
+
+      // Update stat cards
+      statForecastDemand.textContent = totalForecastDemand.toLocaleString();
+      statEstimatedCapacity.textContent = Math.round(totalEstimatedCapacity).toLocaleString();
+
+      const netSurplusVal = Math.round(totalEstimatedCapacity - totalForecastDemand);
+      if (netSurplusVal >= 0) {
+        statNetSurplus.textContent = `+${netSurplusVal.toLocaleString()}`;
+        statNetSurplus.className = 'metric-value';
+        statNetSurplusStatus.textContent = '🟢 Sufficient Weekly Capacity';
+        statNetSurplusStatus.className = 'metric-sub positive';
+      } else {
+        statNetSurplus.textContent = `${netSurplusVal.toLocaleString()}`;
+        statNetSurplus.className = 'metric-value';
+        statNetSurplusStatus.textContent = '🔴 Staffing Deficit';
+        statNetSurplusStatus.className = 'metric-sub negative';
+      }
+
+      // Update hiring deficit card
+      if (totalShortageSlots > 0) {
+        statHiringDeficit.textContent = `${maxDeficitDrivers} Drivers`;
+        statHiringDeficit.className = 'metric-value';
+        statHiringSub.innerHTML = `Deficit: <span style="color: var(--color-red-text); font-weight: 600;">${Math.round(totalDeficitVolume)} deliv</span> (${totalDeficitDriverHours.toFixed(1)} hrs)`;
+      } else {
+        statHiringDeficit.textContent = '0 Drivers';
+        statHiringDeficit.className = 'metric-value';
+        statHiringSub.textContent = '🟢 Fully staffed (0 deficit slots)';
+      }
+
+      // Update max weekly drivers card
+      statMaxDrivers.textContent = `${Math.ceil(maxWeeklyDrivers)} Drivers`;
+      statMaxDriversTime.textContent = `Peak slot: ${maxWeeklyDriversDay} at ${maxWeeklyDriversSlot}`;
+
+      // Staffing recommendations
+      generateStaffingRecommendation(netSurplusVal, totalShortageSlots, peakShortages, totalSurplusVolume);
+
+      // Render Grid
+      renderGrid();
+    }
+
+    function generateStaffingRecommendation(netSurplus, shortageSlots, peakShortages, totalSurplusVolume) {
+      const p30 = currentProductivity * 0.5;
+      
+      if (shortageSlots === 0) {
+        statStaffingRec.innerHTML = `🟢 <strong>Optimal Staffing:</strong> Capacity is fully sufficient across all slots. Current scheduled driver levels can handle the forecasted demand comfortably. Extra capacity can absorb <strong>${Math.round(totalSurplusVolume)}</strong> additional deliveries.`;
+        return;
+      }
+
+      peakShortages.sort((a, b) => b.deficit - a.deficit);
+      const worst = peakShortages[0];
+      
+      const dayShortageCounts = {};
+      peakShortages.forEach(p => {
+        dayShortageCounts[p.day] = (dayShortageCounts[p.day] || 0) + p.drvNeeded;
+      });
+      
+      let worstDay = '';
+      let worstDayVal = 0;
+      for (const day in dayShortageCounts) {
+        if (dayShortageCounts[day] > worstDayVal) {
+          worstDay = day;
+          worstDayVal = dayShortageCounts[day];
+        }
+      }
+
+      const maxConcurrentDeficitDrivers = Math.ceil(worst.deficit / p30);
+
+      let recText = `⚠️ <strong>Shortage Alert:</strong> Sufficient overall capacity, but `;
+      if (netSurplus < 0) {
+        recText = `🔴 <strong>Critical Shortage:</strong> Deficit of <strong>${Math.abs(netSurplus).toLocaleString()}</strong> deliveries. `;
+      }
+
+      recText += `There are <strong>${shortageSlots}</strong> understaffed 30-minute intervals. Peak deficit occurs on <strong>${worst.day} at ${worst.slot}</strong> (need <strong>+${maxConcurrentDeficitDrivers}</strong> drivers). We recommend shifting schedules or hiring flex drivers for <strong>${worstDay}</strong> peaks.`;
+      
+      statStaffingRec.innerHTML = recText;
+    }
+
+    function renderGrid() {
+      // Header row
+      gridHeaderRow.innerHTML = '';
+      const thTime = document.createElement('th');
+      thTime.classList.add('time-header');
+      thTime.textContent = 'Time';
+      gridHeaderRow.appendChild(thTime);
+      
+      WEEKDAYS.forEach(day => {
+        const th = document.createElement('th');
+        const dateStr = appData.forecasts['Berlin'][currentWeekIdx].days[day].date;
+        const shortDate = dateStr.substring(8, 10) + '/' + dateStr.substring(5, 7);
+        
+        // Calculate max driver needed in this day
+        let maxDayDrivers = 0;
+        const p30 = currentProductivity * 0.5;
+        TIME_SLOTS.forEach(slot => {
+          const demand = getForecastDemand(currentCity, currentWeekIdx, day, slot);
+          const reqDrivers = demand / p30;
+          if (reqDrivers > maxDayDrivers) {
+            maxDayDrivers = reqDrivers;
+          }
+        });
+        
+        th.innerHTML = `${day}<br><span style="font-size: 11px; font-weight: 400; color: var(--text-muted);">${shortDate}</span><br><span style="font-size: 11px; font-weight: 600; color: var(--accent-color);">Peak: ${Math.ceil(maxDayDrivers)} drivers</span>`;
+        gridHeaderRow.appendChild(th);
+      });
+
+      // Body rows
+      gridBody.innerHTML = '';
+      TIME_SLOTS.forEach(slotTime => {
+        const tr = document.createElement('tr');
+        
+        // Time label cell
+        const tdTime = document.createElement('td');
+        tdTime.classList.add('time-cell');
+        tdTime.textContent = slotTime;
+        tr.appendChild(tdTime);
+        
+        WEEKDAYS.forEach(day => {
+          const td = document.createElement('td');
+          
+          const demand = getForecastDemand(currentCity, currentWeekIdx, day, slotTime);
+          const activeDrivers = getActiveDrivers(currentCity, day, slotTime);
+          const p30 = currentProductivity * 0.5;
+          const capacity = activeDrivers * p30;
+          
+          const diffDeliveries = capacity - demand;
+          
+          let displayVal = '0';
+          let cellClass = 'sufficient';
+          
+          if (diffDeliveries < 0) {
+            cellClass = 'insufficient';
+            const neededDrivers = Math.ceil(Math.abs(diffDeliveries) / p30);
+            displayVal = `-${neededDrivers}`;
+          } else if (diffDeliveries > 0) {
+            cellClass = 'sufficient';
+            const excessDrivers = Math.floor(diffDeliveries / p30);
+            displayVal = excessDrivers > 0 ? `+${excessDrivers}` : '0';
+          }
+
+          const cellId = `${day}|${slotTime}`;
+          
+          const div = document.createElement('div');
+          div.id = cellId;
+          div.className = `slot-cell ${cellClass}`;
+          if (activeCellId === cellId) {
+            div.classList.add('active-cell');
+          }
+          div.textContent = displayVal;
+          
+          div.addEventListener('click', () => {
+            selectCell(cellId, day, slotTime);
+          });
+          
+          td.appendChild(div);
+          tr.appendChild(td);
+        });
+        
+        gridBody.appendChild(tr);
+      });
+    }
+
+    function selectCell(cellId, weekday, slotTime) {
+      if (activeCellId) {
+        const oldCell = document.getElementById(activeCellId);
+        if (oldCell) oldCell.classList.remove('active-cell');
+      }
+      
+      activeCellId = cellId;
+      const cell = document.getElementById(cellId);
+      if (cell) cell.classList.add('active-cell');
+      
+      showCellAudit(weekday, slotTime);
+    }
+
+    function showCellAudit(weekday, slotTime) {
+      const demand = getForecastDemand(currentCity, currentWeekIdx, weekday, slotTime);
+      const activeDrivers = getActiveDrivers(currentCity, weekday, slotTime);
+      const completions = getHistoricalCompletions(currentCity, weekday, slotTime);
+      
+      const p30 = currentProductivity * 0.5;
+      const capacity = activeDrivers * p30;
+      const diffDeliveries = capacity - demand;
+      
+      const utilization = capacity > 0 ? (demand / capacity) * 100 : 0;
+      
+      const dateStr = appData.forecasts['Berlin'][currentWeekIdx].days[weekday].date;
+      
+      panelTitleTime.textContent = `${weekday} at ${slotTime}`;
+      panelTitleDate.textContent = `Forecast Date: ${dateStr}`;
+      
+      panelValDemand.textContent = demand.toLocaleString() + " deliveries";
+      panelValHistoricalCompletions.textContent = completions.toFixed(1) + " deliveries (May avg)";
+      panelValActiveDrivers.textContent = activeDrivers.toFixed(2) + " active";
+      panelValCapacity.textContent = capacity.toFixed(2) + " deliveries";
+      
+      if (diffDeliveries >= 0) {
+        panelValBalance.textContent = `+${diffDeliveries.toFixed(2)} deliveries (surplus)`;
+        panelValBalance.className = "detail-val highlight green";
+        panelValDriversNeeded.textContent = "0";
+      } else {
+        panelValBalance.textContent = `${diffDeliveries.toFixed(2)} deliveries (shortage)`;
+        panelValBalance.className = "detail-val highlight red";
+        const driversReq = Math.ceil(Math.abs(diffDeliveries) / p30);
+        panelValDriversNeeded.textContent = `${driversReq} additional`;
+      }
+      
+      panelValUtilization.textContent = `${utilization.toFixed(2)}%`;
+      
+      // Math details
+      let isSufficient = diffDeliveries >= 0;
+      let diffVal = Math.abs(diffDeliveries).toFixed(2);
+      
+      let mathText = `<div class="math-formula">1. Estimated Capacity (C)</div>`;
+      mathText += `C = Active Drivers (N) &times; Productivity Rate (P_30)<br>`;
+      mathText += `C = ${activeDrivers.toFixed(2)} &times; (${currentProductivity} / 2)<br>`;
+      mathText += `C = ${activeDrivers.toFixed(2)} &times; ${p30.toFixed(2)}<br>`;
+      mathText += `<strong>C = ${capacity.toFixed(2)} deliveries</strong><br><br>`;
+      
+      mathText += `<div class="math-formula">2. Net Balance (S)</div>`;
+      mathText += `S = Capacity (C) - Demand (D)<br>`;
+      mathText += `S = ${capacity.toFixed(2)} - ${demand}<br>`;
+      mathText += `<strong>S = ${diffDeliveries.toFixed(2)} deliveries</strong><br><br>`;
+      
+      mathText += `<div class="math-formula">3. Driver Audit</div>`;
+      if (isSufficient) {
+        const surplusDrivers = diffDeliveries / p30;
+        mathText += `Surplus Drivers = S / P_30<br>`;
+        mathText += `Surplus = ${diffVal} / ${p30.toFixed(2)} = ${surplusDrivers.toFixed(2)}<br>`;
+        mathText += `<div class="math-result sufficient-result">Result: +${Math.floor(surplusDrivers)} excess drivers</div>`;
+      } else {
+        const neededDrivers = Math.abs(diffDeliveries) / p30;
+        mathText += `Drivers Needed = |S| / P_30<br>`;
+        mathText += `Needed = ${diffVal} / ${p30.toFixed(2)} = ${neededDrivers.toFixed(2)}<br>`;
+        mathText += `<div class="math-result">Result: -${Math.ceil(neededDrivers)} drivers needed</div>`;
+      }
+      
+      panelMathBox.innerHTML = mathText;
+
+      // Explanation
+      let expText = "";
+      if (isSufficient) {
+        expText = `We expect <strong>${demand}</strong> deliveries. Based on May activity, we anticipate an average of <strong>${activeDrivers.toFixed(1)}</strong> active drivers. At ${currentProductivity.toFixed(2)} deliveries/hr, this provides a capacity of <strong>${capacity.toFixed(1)}</strong> completed deliveries. Our fleet has sufficient capacity (surplus of <strong>+${diffDeliveries.toFixed(1)}</strong> deliveries), leaving approximately <strong>+${Math.floor(diffDeliveries / p30)}</strong> drivers available.`;
+      } else {
+        const addDrivers = Math.ceil(Math.abs(diffDeliveries) / p30);
+        expText = `We expect <strong>${demand}</strong> deliveries. However, historical May data suggests only <strong>${activeDrivers.toFixed(1)}</strong> active drivers will be on shift, giving a maximum delivery capacity of <strong>${capacity.toFixed(1)}</strong> orders. This results in an estimated shortage of <strong>${Math.abs(diffDeliveries).toFixed(1)}</strong> deliveries. To prevent delayed orders, we recommend scheduling at least <strong>${addDrivers}</strong> additional driver(s) for this 30-minute block.`;
+      }
+      panelExplanationText.innerHTML = expText;
+
+      panelPlaceholder.style.display = 'none';
+      panelContent.style.display = 'block';
+      auditorPanel.classList.remove('closed');
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
