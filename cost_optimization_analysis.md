@@ -74,11 +74,10 @@ $$13.90 + \text{KPH} \times \text{Tarif Km} \le \frac{20.8333}{1 + \text{Procent
 > - Pentru **Mașină**: $\text{KPH maxim} = \mathbf{21.09 \text{ km/h}}$ (conform pentru majoritatea mașinilor, care au medii de 10-15 km/h!)
 > Acest contract este **extrem de rațional** și trebuie utilizat pe scară largă pentru vârful de vară în Berlin și alte centre universitare.
 
-> [!TIP]
-> **5. B2B / Gewerbe (Freelancer, Taxă = 0%)**
-> - Costul de bază orar: $$13.90 \times 1.08 = 15.01 \text{ EUR/oră}$$
-> - Permite decontarea kilometrilor fără depășirea pragului (KPH max de 34.6 km/h pentru bike și 23.1 km/h pentru mașină).
-> - De asemenea, ne permite să impunem o politică internă prin care **nu achităm kilometri când firma intră în minus** pe acel șofer, asigurând profitabilitate 100%.
+> [!IMPORTANT]
+> **5. Politica Internă de Căpuire a Kilometrilor (Abordare de Tip Gewerbe pe Contracte)**
+> - Toți curierii noștri lucrează **exclusiv pe contracte de muncă standard** (Minijob, Teilzeit, Werkstudent, Sezonier), nu ca freelanceri (Gewerbe).
+> - Totuși, pentru a proteja profitabilitatea în cazul șoferilor care lucrează multe ore cu productivitate scăzută (ceea ce ne duce pe minus), aplicăm o politică internă de tip *Gewerbe*: plătim decontarea kilometrilor în mod normal, dar **sistemul oprește plata kilometrilor în momentul în care firma intră în minus** pe acel șofer (marja din comisionul curselor sale nu acoperă costul salarial orar brut).
 
 ---
 
@@ -88,16 +87,14 @@ Pentru a reduce costurile și a asigura respectarea pragului de 22.50 EUR/oră, 
 
 | Poz | Tip Contract | Vehicul | Procent Taxă | Cost Mediu Estimare (EUR/h) | TPH Real Mediu | Status Conformitate (Cap 22.50) | Decizie Operațională |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **1** | B2B / Gewerbe | Bicicletă | 0.00% | 15.50 - 16.50 | 1.97 | **Conform (Optim)** | **Recrutare prioritară / Tranzit** |
-| **2** | Sezonier (Kurzfristig) | Bicicletă | 3.00% | 16.50 - 17.50 | 2.00 | **Conform (Optim)** | **Angajare masivă studenți vara** |
-| **3** | B2B / Gewerbe | Mașină | 0.00% | 18.00 - 19.50 | 2.00 | **Conform (Optim)** | **Utilizare cu limitare km** |
-| **4** | Sezonier (Kurzfristig) | Mașină | 3.00% | 19.00 - 20.50 | 2.00 | **Conform (Optim)** | **Utilizare temporară pe vară** |
-| **5** | Werkstudent | Bicicletă | 31.89% | 21.00 - 22.00 | 2.03 | **Conform (Sub limită)** | **Angajare permanentă de bază** |
-| **6** | Werkstudent | Mașină | 31.89% | 23.00 - 25.00 | 2.03 | *Neconform (Depășește)* | **Tranziție către Bicicletă/B2B** |
-| **7** | Teilzeit / TZ | Bicicletă | 43.09% | 23.50 - 24.50 | 1.99 | *Neconform (Depășește)* | **Fără angajări noi / Tranzit** |
-| **8** | Teilzeit / TZ | Mașină | 43.09% | 26.50 - 28.00 | 2.00 | *Neconform (Depășește)* | **Restructurare / Concediere** |
-| **9** | Minijob | Bicicletă | 52.39% | 24.50 - 25.50 | 2.00 | *Neconform (Depășește)* | **Eliminare completă din flotă** |
-| **10** | Minijob | Mașină | 52.39% | 27.50 - 29.50 | 2.00 | *Neconform (Depășește)* | **Eliminare completă din flotă** |
+| **1** | Sezonier (Kurzfristig) | Bicicletă | 3.00% | 16.50 - 17.50 | 2.00 | **Conform (Optim)** | **Angajare masivă studenți vara** |
+| **2** | Sezonier (Kurzfristig) | Mașină | 3.00% | 19.00 - 20.50 | 2.00 | **Conform (Optim)** | **Utilizare temporară pe vară** |
+| **3** | Werkstudent | Bicicletă | 31.89% | 21.00 - 22.00 | 2.03 | **Conform (Sub limită)** | **Angajare permanentă de bază** |
+| **4** | Werkstudent | Mașină | 31.89% | 23.00 - 25.00 | 2.03 | *Neconform (Depășește)* | **Tranziție la Bicicletă / Căpuire Km** |
+| **5** | Teilzeit / TZ | Bicicletă | 43.09% | 23.50 - 24.50 | 1.99 | *Neconform (Depășește)* | **Fără angajări noi / Tranzit** |
+| **6** | Teilzeit / TZ | Mașină | 43.09% | 26.50 - 28.00 | 2.00 | *Neconform (Depășește)* | **Restructurare / Concediere** |
+| **7** | Minijob | Bicicletă | 52.39% | 24.50 - 25.50 | 2.00 | *Neconform (Depășește)* | **Eliminare completă din flotă** |
+| **8** | Minijob | Mașină | 52.39% | 27.50 - 29.50 | 2.00 | *Neconform (Depășește)* | **Eliminare completă din flotă** |
 
 
 ---
@@ -115,8 +112,8 @@ Prezentăm mai jos situația actuală din fiecare oraș (ordonată descrescător
   - `TZ` + `Car`: 2.0 h (2.7%) | Cost: 23.63 EUR/h | TPH: 1.00 | KPH: 4.63
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -129,7 +126,7 @@ ________________________________________
   - `Minijob` + `Car`: 101.0 h (100.0%) | Cost: 28.69 EUR/h | TPH: 2.24 | KPH: 11.77
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -143,8 +140,8 @@ ________________________________________
   - `TZ` + `Car`: 613.0 h (46.3%) | Cost: 27.61 EUR/h | TPH: 2.13 | KPH: 13.22
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -157,7 +154,7 @@ ________________________________________
   - `Minijob` + `Car`: 30.0 h (100.0%) | Cost: 28.64 EUR/h | TPH: 2.17 | KPH: 11.68
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -170,7 +167,7 @@ ________________________________________
   - `Minijob` + `Car`: 103.0 h (100.0%) | Cost: 28.50 EUR/h | TPH: 2.04 | KPH: 11.39
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -184,8 +181,8 @@ ________________________________________
   - `TZ` + `Car`: 8.0 h (25.0%) | Cost: 27.41 EUR/h | TPH: 1.75 | KPH: 12.80
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -203,7 +200,7 @@ ________________________________________
   - `Werkstundent` + `Car`: 28.0 h (0.1%) | Cost: 25.45 EUR/h | TPH: 1.75 | KPH: 13.23
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
   3. **Tranziție către Biciclete (Congestie urbană)**: Deoarece Munich are o congestie ridicată (Frankfurt/München au blocaje masive în centru), viteza mașinilor este redusă iar timpul de parcare este mare. BTPH (TPH pe bicicletă) este istoric mai mare sau egal cu cel auto în centru. Se recomandă înlocuirea mașinilor cu biciclete electrice în proporție de **80% biciclete / 20% mașini** pentru livrările ultra-centrale.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
@@ -219,7 +216,7 @@ ________________________________________
   - `TZ` + `Car`: 1341.0 h (92.5%) | Cost: 27.97 EUR/h | TPH: 2.06 | KPH: 14.00
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
   3. **Tranziție către Biciclete (Congestie urbană)**: Deoarece Cologne are o congestie ridicată (Cologne are 67h pierdute pe an, fiind cea mai blocată), viteza mașinilor este redusă iar timpul de parcare este mare. BTPH (TPH pe bicicletă) este istoric mai mare sau egal cu cel auto în centru. Se recomandă înlocuirea mașinilor cu biciclete electrice în proporție de **80% biciclete / 20% mașini** pentru livrările ultra-centrale.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
@@ -236,7 +233,7 @@ ________________________________________
   - `TZ` + `Car`: 19981.0 h (83.0%) | Cost: 28.34 EUR/h | TPH: 1.94 | KPH: 14.80
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
   3. **Tranziție către Biciclete (Congestie urbană)**: Deoarece Frankfurt am Main are o congestie ridicată (Frankfurt/München au blocaje masive în centru), viteza mașinilor este redusă iar timpul de parcare este mare. BTPH (TPH pe bicicletă) este istoric mai mare sau egal cu cel auto în centru. Se recomandă înlocuirea mașinilor cu biciclete electrice în proporție de **80% biciclete / 20% mașini** pentru livrările ultra-centrale.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
@@ -252,8 +249,8 @@ ________________________________________
   - `TZ` + `Car`: 696.0 h (74.0%) | Cost: 27.66 EUR/h | TPH: 2.33 | KPH: 13.32
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -268,8 +265,8 @@ ________________________________________
   - `TZ` + `Car`: 6.0 h (15.0%) | Cost: 25.48 EUR/h | TPH: 1.50 | KPH: 8.62
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -284,7 +281,7 @@ ________________________________________
   - `TZ` + `Car`: 650.0 h (81.7%) | Cost: 27.74 EUR/h | TPH: 1.96 | KPH: 13.51
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
   3. **Tranziție către Biciclete (Congestie urbană)**: Deoarece Stuttgart are o congestie ridicată (Frankfurt/München au blocaje masive în centru), viteza mașinilor este redusă iar timpul de parcare este mare. BTPH (TPH pe bicicletă) este istoric mai mare sau egal cu cel auto în centru. Se recomandă înlocuirea mașinilor cu biciclete electrice în proporție de **80% biciclete / 20% mașini** pentru livrările ultra-centrale.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
@@ -299,8 +296,8 @@ ________________________________________
   - `TZ` + `Car`: 90.0 h (40.2%) | Cost: 26.94 EUR/h | TPH: 1.58 | KPH: 11.77
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -314,8 +311,8 @@ ________________________________________
   - `TZ` + `Car`: 490.0 h (99.8%) | Cost: 27.87 EUR/h | TPH: 2.10 | KPH: 13.78
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Menținerea interdicției pe Minijobs**: Nu se vor aproba contracte noi de tip Minijob în acest oraș.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -331,8 +328,8 @@ ________________________________________
   - `TZ` + `Car`: 2258.0 h (77.1%) | Cost: 27.94 EUR/h | TPH: 2.37 | KPH: 13.93
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -347,8 +344,8 @@ ________________________________________
   - `TZ` + `Car`: 3895.0 h (94.7%) | Cost: 27.71 EUR/h | TPH: 2.38 | KPH: 13.44
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -364,7 +361,7 @@ ________________________________________
   - `TZ` + `Car`: 3357.0 h (77.1%) | Cost: 27.60 EUR/h | TPH: 2.36 | KPH: 13.20
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
   3. **Tranziție către Biciclete (Congestie urbană)**: Deoarece Dusseldorf are o congestie ridicată (Frankfurt/München au blocaje masive în centru), viteza mașinilor este redusă iar timpul de parcare este mare. BTPH (TPH pe bicicletă) este istoric mai mare sau egal cu cel auto în centru. Se recomandă înlocuirea mașinilor cu biciclete electrice în proporție de **80% biciclete / 20% mașini** pentru livrările ultra-centrale.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
@@ -380,8 +377,8 @@ ________________________________________
   - `TZ` + `Car`: 1683.0 h (68.8%) | Cost: 27.42 EUR/h | TPH: 2.09 | KPH: 12.81
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -397,8 +394,8 @@ ________________________________________
   - `TZ` + `Car`: 1065.0 h (52.0%) | Cost: 26.63 EUR/h | TPH: 1.98 | KPH: 11.11
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -413,8 +410,8 @@ ________________________________________
   - `TZ` + `Car`: 1209.0 h (55.3%) | Cost: 27.29 EUR/h | TPH: 2.13 | KPH: 12.52
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -428,8 +425,8 @@ ________________________________________
   - `Werkstundent` + `Bicycle`: 8.0 h (2.5%) | Cost: 21.81 EUR/h | TPH: 2.50 | KPH: 7.04
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Menținerea interdicției pe Minijobs**: Nu se vor aproba contracte noi de tip Minijob în acest oraș.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -443,8 +440,8 @@ ________________________________________
   - `TZ` + `Car`: 446.0 h (72.1%) | Cost: 26.25 EUR/h | TPH: 1.98 | KPH: 10.28
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -458,8 +455,8 @@ ________________________________________
   - `TZ` + `Car`: 1152.0 h (97.6%) | Cost: 26.88 EUR/h | TPH: 2.07 | KPH: 11.64
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -474,8 +471,8 @@ ________________________________________
   - `TZ` + `Car`: 34.0 h (30.6%) | Cost: 26.50 EUR/h | TPH: 1.29 | KPH: 10.83
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -489,8 +486,8 @@ ________________________________________
   - `TZ` + `Car`: 92.0 h (80.0%) | Cost: 26.45 EUR/h | TPH: 1.99 | KPH: 10.72
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -504,8 +501,8 @@ ________________________________________
   - `TZ` + `Car`: 697.0 h (68.4%) | Cost: 26.32 EUR/h | TPH: 1.94 | KPH: 10.43
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -521,8 +518,8 @@ ________________________________________
   - `Werkstundent` + `Bicycle`: 69.0 h (3.0%) | Cost: 21.23 EUR/h | TPH: 1.46 | KPH: 5.01
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -536,8 +533,8 @@ ________________________________________
   - `TZ` + `Car`: 1.0 h (0.8%) | Cost: 25.69 EUR/h | TPH: 1.00 | KPH: 9.09
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -555,8 +552,8 @@ ________________________________________
   - `Werkstundent` + `Car`: 171.0 h (3.2%) | Cost: 24.88 EUR/h | TPH: 2.36 | KPH: 11.88
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -573,8 +570,8 @@ ________________________________________
   - `Werkstundent` + `Bicycle`: 1.0 h (0.1%) | Cost: 20.58 EUR/h | TPH: 1.00 | KPH: 2.74
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -590,8 +587,8 @@ ________________________________________
   - `TZ` + `Car`: 129.0 h (15.2%) | Cost: 25.39 EUR/h | TPH: 1.42 | KPH: 8.43
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -607,8 +604,8 @@ ________________________________________
   - `TZ` + `Car`: 1599.0 h (75.4%) | Cost: 26.39 EUR/h | TPH: 2.02 | KPH: 10.59
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -625,8 +622,8 @@ ________________________________________
   - `Werkstundent` + `Bicycle`: 155.0 h (3.0%) | Cost: 21.80 EUR/h | TPH: 2.41 | KPH: 7.01
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -642,8 +639,8 @@ ________________________________________
   - `TZ` + `Car`: 5788.0 h (88.7%) | Cost: 26.49 EUR/h | TPH: 1.89 | KPH: 10.81
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -658,8 +655,8 @@ ________________________________________
   - `TZ` + `Car`: 2015.0 h (96.8%) | Cost: 26.19 EUR/h | TPH: 2.04 | KPH: 10.16
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -673,8 +670,8 @@ ________________________________________
   - `TZ` + `Car`: 519.0 h (99.8%) | Cost: 26.14 EUR/h | TPH: 1.64 | KPH: 10.04
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -689,8 +686,8 @@ ________________________________________
   - `TZ` + `Car`: 261.0 h (68.7%) | Cost: 25.62 EUR/h | TPH: 1.57 | KPH: 8.93
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -703,8 +700,8 @@ ________________________________________
   - `TZ` + `Car`: 521.0 h (100.0%) | Cost: 26.05 EUR/h | TPH: 1.78 | KPH: 9.86
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Menținerea interdicției pe Minijobs**: Nu se vor aproba contracte noi de tip Minijob în acest oraș.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -719,8 +716,8 @@ ________________________________________
   - `TZ` + `Car`: 383.0 h (55.5%) | Cost: 26.02 EUR/h | TPH: 1.50 | KPH: 9.79
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -736,8 +733,8 @@ ________________________________________
   - `TZ` + `Car`: 907.0 h (55.9%) | Cost: 26.13 EUR/h | TPH: 1.62 | KPH: 10.04
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -753,8 +750,8 @@ ________________________________________
   - `TZ` + `Car`: 2574.0 h (75.1%) | Cost: 25.97 EUR/h | TPH: 1.57 | KPH: 9.68
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -772,8 +769,8 @@ ________________________________________
   - `Werkstundent` + `Car`: 8.0 h (0.2%) | Cost: 21.79 EUR/h | TPH: 1.25 | KPH: 4.65
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -788,8 +785,8 @@ ________________________________________
   - `TZ` + `Car`: 266.0 h (94.3%) | Cost: 25.85 EUR/h | TPH: 1.39 | KPH: 9.42
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -805,8 +802,8 @@ ________________________________________
   - `Werkstundent` + `Bicycle`: 55.0 h (6.3%) | Cost: 21.74 EUR/h | TPH: 1.55 | KPH: 6.83
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -823,8 +820,8 @@ ________________________________________
   - `Werkstundent` + `Bicycle`: 133.0 h (8.0%) | Cost: 21.41 EUR/h | TPH: 1.93 | KPH: 5.66
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -842,7 +839,7 @@ ________________________________________
   - `Werkstundent` + `Car`: 6.0 h (0.0%) | Cost: 22.78 EUR/h | TPH: 1.17 | KPH: 6.98
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
   3. **Tranziție către Biciclete (Congestie urbană)**: Deoarece Berlin are o congestie ridicată (Frankfurt/München au blocaje masive în centru), viteza mașinilor este redusă iar timpul de parcare este mare. BTPH (TPH pe bicicletă) este istoric mai mare sau egal cu cel auto în centru. Se recomandă înlocuirea mașinilor cu biciclete electrice în proporție de **80% biciclete / 20% mașini** pentru livrările ultra-centrale.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
@@ -857,8 +854,8 @@ ________________________________________
   - `TZ` + `Car`: 35.0 h (70.0%) | Cost: 25.15 EUR/h | TPH: 1.63 | KPH: 7.90
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -875,8 +872,8 @@ ________________________________________
   - `Werkstundent` + `Bicycle`: 701.0 h (21.6%) | Cost: 22.03 EUR/h | TPH: 1.91 | KPH: 7.82
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -890,8 +887,8 @@ ________________________________________
   - `TZ` + `Car`: 246.0 h (96.5%) | Cost: 25.19 EUR/h | TPH: 1.43 | KPH: 8.01
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Menținerea interdicției pe Minijobs**: Nu se vor aproba contracte noi de tip Minijob în acest oraș.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -904,8 +901,8 @@ ________________________________________
   - `TZ` + `Car`: 492.0 h (100.0%) | Cost: 25.14 EUR/h | TPH: 1.71 | KPH: 7.89
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Menținerea interdicției pe Minijobs**: Nu se vor aproba contracte noi de tip Minijob în acest oraș.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -921,8 +918,8 @@ ________________________________________
   - `TZ` + `Car`: 4.0 h (2.9%) | Cost: 25.52 EUR/h | TPH: 1.00 | KPH: 8.71
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -937,8 +934,8 @@ ________________________________________
   - `TZ` + `Car`: 128.0 h (90.8%) | Cost: 25.01 EUR/h | TPH: 1.25 | KPH: 7.61
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -953,8 +950,8 @@ ________________________________________
   - `TZ` + `Car`: 624.0 h (95.4%) | Cost: 24.85 EUR/h | TPH: 1.50 | KPH: 7.26
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -967,8 +964,8 @@ ________________________________________
   - `TZ` + `Car`: 63.0 h (100.0%) | Cost: 24.68 EUR/h | TPH: 1.13 | KPH: 6.89
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Menținerea interdicției pe Minijobs**: Nu se vor aproba contracte noi de tip Minijob în acest oraș.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -982,8 +979,8 @@ ________________________________________
   - `TZ` + `Car`: 62.0 h (91.2%) | Cost: 24.52 EUR/h | TPH: 1.32 | KPH: 6.56
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -1000,8 +997,8 @@ ________________________________________
   - `Werkstundent` + `Bicycle`: 189.0 h (18.3%) | Cost: 21.39 EUR/h | TPH: 1.81 | KPH: 5.59
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -1017,8 +1014,8 @@ ________________________________________
   - `Werkstundent` + `Bicycle`: 98.0 h (3.3%) | Cost: 20.77 EUR/h | TPH: 1.47 | KPH: 3.42
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -1031,8 +1028,8 @@ ________________________________________
   - `TZ` + `Car`: 405.0 h (100.0%) | Cost: 24.20 EUR/h | TPH: 1.39 | KPH: 5.87
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Menținerea interdicției pe Minijobs**: Nu se vor aproba contracte noi de tip Minijob în acest oraș.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -1046,8 +1043,8 @@ ________________________________________
   - `TZ` + `Car`: 120.0 h (80.5%) | Cost: 23.82 EUR/h | TPH: 1.30 | KPH: 5.05
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -1063,8 +1060,8 @@ ________________________________________
   - `TZ` + `Car`: 457.0 h (51.2%) | Cost: 23.84 EUR/h | TPH: 1.73 | KPH: 5.10
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Eliminarea Minijobs**: Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -1078,8 +1075,8 @@ ________________________________________
   - `TZ` + `Car`: 2.0 h (2.6%) | Cost: 25.13 EUR/h | TPH: 1.00 | KPH: 7.87
 - **Pași clari de eficientizare pentru a atinge maximum 22.50 EUR/oră**:
   1. **Menținerea interdicției pe Minijobs**: Nu se vor aproba contracte noi de tip Minijob în acest oraș.
-  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau, unde este posibil, pe Werkstudent pe bicicletă.
-  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice (livrări în suburbii), iar în centru utilizarea exclusivă a Werkstudent pe bicicletă.
+  2. **Restructurarea Teilzeit (TZ)**: Stoparea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B).
+  3. **Optimizarea Flotei Auto/Bicicletă**: Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor.
   4. **Recrutare pentru Vârful de Vară**: Suplinirea deficitului de capacitate din iunie prin angajarea de Werkstudenten permanent și studenți pe contract sezonier (Kurzfristig) pe bicicletă, asigurând costuri orare de ~17.00 - 21.00 EUR.
 
 ________________________________________
@@ -1100,14 +1097,14 @@ Pentru a preveni pierderile cauzate de șoferii cu TPH scăzut (care fac 11-12h 
 
 ### Analiza impactului pe date reale (Mai):
 - În Mai, am realizat un Umsatz total de **2,774,019.23 EUR**.
-- Sub comisionul standard de 8%, veniturile noastre din comisioane au fost de **221,921.54 EUR**, în timp ce am plătit **377,686.02 EUR** în decontări de kilometri, rezultând o pierdere netă de **155,764.48 EUR** doar pe partea de rulaj orar pe Gewerbe.
+- Sub comisionul standard de 8%, veniturile noastre din comisioane au fost de **221,921.54 EUR**, în timp ce am plătit **377,686.02 EUR** în decontări de kilometri, rezultând o pierdere netă de **155,764.48 EUR** doar pe partea de rulaj orar pe contracte din cauza decontării nelimitate de kilometri.
 - Prin aplicarea **Comisionului Progresiv Tiered**, veniturile din comisioane cresc la **288,095.80 EUR** (o creștere directă de **66,174.27 EUR** de profit orar, fără a afecta șoferii cu venituri mici).
 
 ---
 
-## 6. Simularea Politicii B2B Gewerbe (Freelancer)
+## 6. Simularea Politicii de Căpuire a Kilometrilor pe Contracte (Abordare de Tip Gewerbe)
 
-Sub modelul B2B / Gewerbe, șoferii lucrează ca contractori independenți. Nu se plătesc taxe sociale de angajator (0% taxă), dar le decontăm kilometrii conform contractului (0.20 EUR/km bike, 0.30 EUR/km car).
+Sub această abordare, deși curierii noștri sunt angajați strict cu contracte de muncă standard (cu toate taxele sociale achitate), aplicăm o regulă internă de tip *Gewerbe* pentru decontarea kilometrilor în scopul responsabilizării acestora. Kilometrii sunt decontați în mod normal (0.20 EUR/km bike, 0.30 EUR/km car), dar compensația este suspendată sau capată dacă activitatea lor ne duce pe minus.
 
 Pentru a preveni pierderile când comisionul reținut este mai mic decât kilometrii decontați, am simulat două politici interne pe baza celor 8,346 driver-weeks active în Mai:
 

@@ -1090,7 +1090,7 @@
           </div>
 
           <div class="metric-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #f0fdf4 100%); border-color: rgba(72,187,120,0.15);">
-            <div class="metric-header" id="cost-lbl-profit">Simulated Gewerbe Net Profit</div>
+            <div class="metric-header" id="cost-lbl-profit">Simulated Net Margin (Capped)</div>
             <div class="metric-value" id="cost-val-profit" style="color: #166534;">0.00 EUR</div>
             <div class="metric-sub" id="cost-val-savings">Savings info</div>
           </div>
@@ -25124,8 +25124,12 @@
         costLblAvgCost: "Avg Cost per Employee/Hour",
         costLblTarget: "Restructuring Target",
         costLblTargetSub: "Maximum limit/hour",
-        costLblProfit: "Simulated Mileage Savings",
+        costLblProfit: "Simulated Net Margin (Capped)",
         costLblSavings: "Savings info",
+        contractSeasonal: "Seasonal Student (Kurzfristig)",
+        contractWerkstudent: "Werkstudent",
+        contractTeilzeit: "Teilzeit / TZ",
+        contractMinijob: "Minijob",
         costLblChartTitle: "Contract & Vehicle Cost per Hour Comparison",
         costLblLimitInfo: "Target: ≤ 22.50 EUR (Solid Line)",
         costLblPlanTitle: "Fleet Restructuring Action Plan",
@@ -25274,8 +25278,12 @@
         costLblAvgCost: "Cost Mediu / Angajat / Oră",
         costLblTarget: "Țintă Restructurare",
         costLblTargetSub: "Limită maximă / oră",
-        costLblProfit: "Economii Simulate din Km",
+        costLblProfit: "Marjă Netă Simulată (Km Căpuiți)",
         costLblSavings: "Informații economii",
+        contractSeasonal: "Student Sezonier (Kurzfristig)",
+        contractWerkstudent: "Werkstudent",
+        contractTeilzeit: "Teilzeit / TZ",
+        contractMinijob: "Minijob",
         costLblChartTitle: "Comparativ Cost pe Oră după Contract & Vehicul",
         costLblLimitInfo: "Limită: ≤ 22.50 EUR (Linia Solidă)",
         costLblPlanTitle: "Plan de Acțiune Restructurare Flotă",
@@ -26219,8 +26227,8 @@
 
       if (hasTZ) {
         actions.push(currentLang === 'ro'
-          ? "<strong>Restructurarea Teilzeit (TZ):</strong> Înghețarea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Gewerbe sau pe Werkstudent pe bicicletă."
-          : "<strong>Teilzeit (TZ) Restructuring:</strong> Freeze TZ hiring. Transition existing TZ car couriers to Gewerbe or Werkstudent on Bicycle.");
+          ? "<strong>Restructurarea Teilzeit (TZ):</strong> Înghețarea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B)."
+          : "<strong>Teilzeit (TZ) Restructuring:</strong> Freeze TZ hiring. Transition existing TZ car couriers to Werkstudent on Bicycle or apply strict mileage capping (Plan B).");
       }
 
       const isCongested = ['Frankfurt am Main', 'Munich', 'Berlin', 'Cologne', 'Dusseldorf', 'Stuttgart'].includes(cityData.salaries_name);
@@ -26230,8 +26238,8 @@
           : `<strong>Bicycle Shift (Congested center):</strong> Since ${currentCity} suffers from heavy traffic and parking delays, e-bikes are faster. Target a ratio of <strong>80% e-bikes / 20% cars</strong>.`);
       } else {
         actions.push(currentLang === 'ro'
-          ? "<strong>Optimizare flotă:</strong> Menținerea mașinilor doar pe contracte Werkstudent sau Gewerbe și impunerea unei limite geografice."
-          : "<strong>Fleet optimization:</strong> Keep cars only for Werkstudent or Gewerbe contracts, and restrict car shifts to suburb deliveries.");
+          ? "<strong>Optimizare flotă:</strong> Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor."
+          : "<strong>Fleet optimization:</strong> Keep cars only for Werkstudent contracts with strict mileage capping (Plan B), and restrict car shifts to suburb deliveries.");
       }
 
       // Summer peak volume check
@@ -26263,16 +26271,14 @@
       const t = TRANSLATIONS[currentLang];
       
       const hierarchy = [
-        { poz: 1, contract: "B2B / Gewerbe", vehicle: "Bicycle", tax: "0.00%", cost: "15.50 - 16.50", badge: t.badgeOptimal, color: 'green' },
-        { poz: 2, contract: "Seasonal Student (Kurzfristig)", vehicle: "Bicycle", tax: "3.00%", cost: "16.50 - 17.50", badge: t.badgeOptimal, color: 'green' },
-        { poz: 3, contract: "B2B / Gewerbe", vehicle: "Car", tax: "0.00%", cost: "18.00 - 19.50", badge: t.badgeOptimal, color: 'green' },
-        { poz: 4, contract: "Seasonal Student (Kurzfristig)", vehicle: "Car", tax: "3.00%", cost: "19.00 - 20.50", badge: t.badgeOptimal, color: 'green' },
-        { poz: 5, contract: "Werkstudent", vehicle: "Bicycle", tax: "31.89%", cost: "21.00 - 22.00", badge: t.badgeSubLimit, color: 'green' },
-        { poz: 6, contract: "Werkstudent", vehicle: "Car", tax: "31.89%", cost: "23.00 - 25.00", badge: t.badgeNeconform, color: 'orange' },
-        { poz: 7, contract: "Teilzeit / TZ", vehicle: "Bicycle", tax: "43.09%", cost: "23.50 - 24.50", badge: t.badgeNeconform, color: 'orange' },
-        { poz: 8, contract: "Teilzeit / TZ", vehicle: "Car", tax: "43.09%", cost: "26.50 - 28.00", badge: t.badgeNeconform, color: 'orange' },
-        { poz: 9, contract: "Minijob", vehicle: "Bicycle", tax: "52.39%", cost: "24.50 - 25.50", badge: t.badgeEliminate, color: 'red' },
-        { poz: 10, contract: "Minijob", vehicle: "Car", tax: "52.39%", cost: "27.50 - 29.50", badge: t.badgeEliminate, color: 'red' }
+        { poz: 1, contract: t.contractSeasonal, vehicle: "Bicycle", tax: "3.00%", cost: "16.50 - 17.50", badge: t.badgeOptimal, color: 'green' },
+        { poz: 2, contract: t.contractSeasonal, vehicle: "Car", tax: "3.00%", cost: "19.00 - 20.50", badge: t.badgeOptimal, color: 'green' },
+        { poz: 3, contract: t.contractWerkstudent, vehicle: "Bicycle", tax: "31.89%", cost: "21.00 - 22.00", badge: t.badgeSubLimit, color: 'green' },
+        { poz: 4, contract: t.contractWerkstudent, vehicle: "Car", tax: "31.89%", cost: "23.00 - 25.00", badge: t.badgeNeconform, color: 'orange' },
+        { poz: 5, contract: t.contractTeilzeit, vehicle: "Bicycle", tax: "43.09%", cost: "23.50 - 24.50", badge: t.badgeNeconform, color: 'orange' },
+        { poz: 6, contract: t.contractTeilzeit, vehicle: "Car", tax: "43.09%", cost: "26.50 - 28.00", badge: t.badgeNeconform, color: 'orange' },
+        { poz: 7, contract: t.contractMinijob, vehicle: "Bicycle", tax: "52.39%", cost: "24.50 - 25.50", badge: t.badgeEliminate, color: 'red' },
+        { poz: 8, contract: t.contractMinijob, vehicle: "Car", tax: "52.39%", cost: "27.50 - 29.50", badge: t.badgeEliminate, color: 'red' }
       ];
 
       hierarchy.forEach(item => {
