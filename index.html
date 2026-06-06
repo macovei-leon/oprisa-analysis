@@ -1097,10 +1097,28 @@
             <div class="metric-sub" id="cost-lbl-target-sub">Maximum limit/hour</div>
           </div>
 
-          <div class="metric-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #f0fdf4 100%); border-color: rgba(72,187,120,0.15);">
-            <div class="metric-header" id="cost-lbl-profit">Simulated Net Margin (Capped)</div>
-            <div class="metric-value" id="cost-val-profit" style="color: #166534;">0.00 EUR</div>
-            <div class="metric-sub" id="cost-val-savings">Savings info</div>
+          <div class="metric-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #f0fdf4 100%); border-color: rgba(72,187,120,0.15); display: flex; flex-direction: column; justify-content: space-between; min-height: 160px;">
+            <div>
+              <div class="metric-header" id="cost-lbl-profit">Simulated Net Margin (Capped)</div>
+              <div class="metric-value" id="cost-val-profit" style="color: #166534; font-size: 24px; margin-bottom: 8px;">0.00 EUR</div>
+            </div>
+            
+            <div id="cost-val-savings" style="display: none;"></div>
+
+            <div class="sim-details-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 8px; margin-top: auto;">
+              <div class="sim-sub-item">
+                <span class="sim-sub-label" id="lbl-sim-sub-paid" style="font-size: 10px; color: var(--text-muted); display: block; text-transform: uppercase; font-weight: 600; text-align: left;">Mileage Paid</span>
+                <span class="sim-sub-val" id="val-sim-sub-paid" style="font-size: 12px; font-weight: 700; color: var(--text-main); display: block; text-align: left; margin-top: 2px;">0 EUR</span>
+              </div>
+              <div class="sim-sub-item">
+                <span class="sim-sub-label" id="lbl-sim-sub-rev" style="font-size: 10px; color: var(--text-muted); display: block; text-transform: uppercase; font-weight: 600; text-align: left;">Revenue Margin</span>
+                <span class="sim-sub-val" id="val-sim-sub-rev" style="font-size: 12px; font-weight: 700; color: var(--text-main); display: block; text-align: left; margin-top: 2px;">0 EUR</span>
+              </div>
+              <div class="sim-sub-item" style="grid-column: span 2; display: flex; justify-content: space-between; align-items: center; background: rgba(37,99,235,0.06); padding: 4px 8px; border-radius: 4px; margin-top: 6px;">
+                <span class="sim-sub-label" id="lbl-sim-sub-savings" style="font-size: 11px; font-weight: 600; color: var(--accent-color);">Mileage Savings</span>
+                <span class="sim-sub-val" id="val-sim-sub-savings" style="font-size: 11px; font-weight: 700; color: var(--accent-color);">0 EUR</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -25168,6 +25186,9 @@
         lblProgT4: "Umsatz 3000-5000 EUR",
         lblProgT5: "Umsatz 5000-8000 EUR",
         lblProgT6: "Umsatz > 8000 EUR",
+        lblSimSubPaid: "Mileage Paid",
+        lblSimSubRev: "Revenue Margin",
+        lblSimSubSavings: "Mileage Savings",
 
         // Policy explanations
         expPolicyStandard: "We pay 100% of recorded mileage compensation to all drivers, regardless of individual trip profitability.",
@@ -25324,6 +25345,9 @@
         lblProgT4: "Umsatz 3000-5000 EUR",
         lblProgT5: "Umsatz 5000-8000 EUR",
         lblProgT6: "Umsatz > 8000 EUR",
+        lblSimSubPaid: "Km Achitați",
+        lblSimSubRev: "Marjă Venit",
+        lblSimSubSavings: "Economii Km",
 
         // Policy explanations
         expPolicyStandard: "Se plătește 100% din compensația pentru kilometri înregistrați pentru toți șoferii, indiferent de profitabilitate.",
@@ -25529,6 +25553,13 @@
       document.getElementById('lbl-prog-t4').textContent = t.lblProgT4;
       document.getElementById('lbl-prog-t5').textContent = t.lblProgT5;
       document.getElementById('lbl-prog-t6').textContent = t.lblProgT6;
+
+      const lblPaid = document.getElementById('lbl-sim-sub-paid');
+      const lblRev = document.getElementById('lbl-sim-sub-rev');
+      const lblSavings = document.getElementById('lbl-sim-sub-savings');
+      if (lblPaid) lblPaid.textContent = t.lblSimSubPaid;
+      if (lblRev) lblRev.textContent = t.lblSimSubRev;
+      if (lblSavings) lblSavings.textContent = t.lblSimSubSavings;
     }
 
     function initDashboard() {
@@ -26059,6 +26090,14 @@
         costValAvgCostStatus.textContent = "";
         costValProfit.textContent = "0.00 EUR";
         costValSavings.textContent = "";
+        
+        const valPaid = document.getElementById('val-sim-sub-paid');
+        const valRev = document.getElementById('val-sim-sub-rev');
+        const valSavings = document.getElementById('val-sim-sub-savings');
+        if (valPaid) valPaid.textContent = "0 EUR";
+        if (valRev) valRev.textContent = "0 EUR";
+        if (valSavings) valSavings.textContent = "0 EUR";
+
         costBarsList.innerHTML = "No cost data available for this city.";
         costActionList.innerHTML = "";
         return;
@@ -26170,6 +26209,13 @@
       costValProfit.textContent = `${sign}${simulatedProfit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} EUR`;
       costValProfit.className = simulatedProfit >= 0 ? "metric-value positive" : "metric-value negative";
       
+      const valPaid = document.getElementById('val-sim-sub-paid');
+      const valRev = document.getElementById('val-sim-sub-rev');
+      const valSavings = document.getElementById('val-sim-sub-savings');
+      if (valPaid) valPaid.textContent = `${Math.round(totalMileagePaid).toLocaleString()} EUR`;
+      if (valRev) valRev.textContent = `${Math.round(totalRevenue).toLocaleString()} EUR`;
+      if (valSavings) valSavings.textContent = `${Math.round(savings).toLocaleString()} EUR`;
+
       costValSavings.innerHTML = t.simSavingsText
         .replace('{mileage}', Math.round(totalMileagePaid).toLocaleString())
         .replace('{revenue}', Math.round(totalRevenue).toLocaleString())
