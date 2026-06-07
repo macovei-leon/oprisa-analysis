@@ -141,6 +141,38 @@ Pentru a asigura respectarea limitei de **22.50 EUR/oră**, trebuie luate următ
 
 
 
+
+---
+
+## 3.2 Necesarul Exact de Recrutare (Curieri Suplimentari) pe Orașe (Iunie 2026)
+
+Pentru a asigura acoperirea 100% a vârfurilor de cerere prognozate pentru cele 5 săptămâni din Iunie 2026, am determinat numărul exact de curieri suplimentari necesari (în paralel peste capacitatea istorică din Mai) pentru fiecare dintre cele 17 orașe active. 
+
+Toți curierii noi trebuie angajați exclusiv sub profile conforme: **Werkstudent** (permanent) sau **Student Sezonier / Kurzfristig** (pe perioada verii, taxă 3%), de preferat pe **Bicicletă** (sau e-bike în marile aglomerări urbane).
+
+| Oraș | Săptămâna 1 | Săptămâna 2 | Săptămâna 3 | Săptămâna 4 | Săptămâna 5 | Tip Contract & Vehicul Recomandat |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Augsburg** | +9 | +8 | +9 | +11 | +10 | Werkstudent / Sezonier pe Bicicletă |
+| **Berlin** | +65 | +67 | +102 | +105 | +110 | Werkstudent / Sezonier pe Bicicletă (Min. 80% E-Bike) |
+| **Bielefeld** | +17 | +12 | +16 | +13 | +13 | Werkstudent / Sezonier pe Bicicletă |
+| **Frankfurt** | +37 | +37 | +59 | +60 | +63 | Werkstudent / Sezonier pe Bicicletă (Min. 80% E-Bike) |
+| **Freiburg** | +6 | +6 | +7 | +5 | +5 | Werkstudent / Sezonier pe Bicicletă |
+| **Gütersloh** | +1 | +2 | +2 | +3 | +3 | Werkstudent / Sezonier pe Bicicletă |
+| **Heidelberg** | +10 | +10 | +11 | +9 | +9 | Werkstudent / Sezonier pe Bicicletă |
+| **Heilbronn** | +5 | +6 | +8 | +8 | +8 | Werkstudent / Sezonier pe Bicicletă |
+| **Ingolstadt** | +7 | +9 | +13 | +13 | +14 | Werkstudent / Sezonier pe Bicicletă |
+| **Karlsruhe** | +8 | +7 | +8 | +6 | +6 | Werkstudent / Sezonier pe Bicicletă |
+| **Leipzig** | +9 | +15 | +23 | +26 | +27 | Werkstudent / Sezonier pe Bicicletă (Min. 80% E-Bike) |
+| **München** | +53 | +56 | +85 | +87 | +91 | Werkstudent / Sezonier pe Bicicletă (Min. 80% E-Bike) |
+| **Nürnberg** | +11 | +17 | +27 | +29 | +30 | Werkstudent / Sezonier pe Bicicletă |
+| **Potsdam** | +9 | +11 | +11 | +12 | +12 | Werkstudent / Sezonier pe Bicicletă |
+| **Regensburg** | +10 | +12 | +17 | +16 | +16 | Werkstudent / Sezonier pe Bicicletă |
+| **Ulm** | +5 | +5 | +6 | +7 | +7 | Werkstudent / Sezonier pe Bicicletă |
+| **Worms** | +4 | +5 | +7 | +7 | +8 | Werkstudent / Sezonier pe Bicicletă |
+
+> [!NOTE]
+> Aceste cifre reprezintă numărul maxim de curieri care trebuie să fie pe traseu în același timp la orele de vârf (peak deficit) dincolo de numărul actual activ. Aceștia vor asigura un nivel de servicii de 100% și vor absorbi creșterile masive de vară.
+
 ---
 
 ## 4. Analiza specifică pe orașe și Planuri de acțiune

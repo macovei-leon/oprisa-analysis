@@ -1002,6 +1002,27 @@
         </div>
       </div>
     </div>
+
+    <!-- Weekly Hiring Plan Card -->
+    <div class="hierarchy-card" id="weekly-hiring-plan-card" style="margin-top: 24px; background: var(--card-bg); border: 1px solid var(--card-border); backdrop-filter: blur(12px); border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
+      <div class="checklist-title" id="forecast-lbl-hiring-plan-title" style="margin-bottom: 8px;">Weekly Hiring Plan & Deficit Coverage (June 2026)</div>
+      <div style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;" id="forecast-lbl-hiring-plan-sub">
+        The following table shows the exact number of concurrent drivers needed in addition to the historical capacity to cover 100% of forecast peaks for each week.
+      </div>
+      <table class="hierarchy-table">
+        <thead>
+          <tr>
+            <th id="forecast-th-hp-week" style="text-align: left; padding: 8px 12px; width: 120px;">Week</th>
+            <th id="forecast-th-hp-dates" style="text-align: left; padding: 8px 12px; width: 220px;">Date Range</th>
+            <th id="forecast-th-hp-peak" style="text-align: center; padding: 8px 12px; width: 180px;">Peak Drivers Needed</th>
+            <th id="forecast-th-hp-contract" style="text-align: left; padding: 8px 12px;">Target Contract Type</th>
+          </tr>
+        </thead>
+        <tbody id="forecast-hiring-plan-body">
+          <!-- Dynamically populated in JS -->
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- TAB 2: COST & RESTRICTURING -->
@@ -58751,6 +58772,12 @@ const COST_DB = {
         costLblViewScope: "Simulation Scope:",
         scopeBtnCity: "City Level",
         scopeBtnGlobal: "Global Fleet",
+        forecastLblHiringPlanTitle: "Weekly Recruitment & Hiring Plan (June 2026)",
+        forecastLblHiringPlanSub: "The following table shows the exact number of concurrent drivers needed in addition to the historical capacity to cover 100% of forecast peaks for each week.",
+        forecastThHpWeek: "Week",
+        forecastThHpDates: "Date Range",
+        forecastThHpPeak: "Peak Drivers Needed",
+        forecastThHpContract: "Target Contract Type",
         
         // Math/Sim explanation
         simSavingsText: "Mileage Paid: <strong>{mileage} EUR</strong> • Revenue Margin: <strong>{revenue} EUR</strong><br>Direct Mileage Savings: <strong>{savings} EUR</strong> vs standard contract.",
@@ -58922,6 +58949,12 @@ const COST_DB = {
         costLblViewScope: "Domeniu Simulare:",
         scopeBtnCity: "La nivel de Oraș",
         scopeBtnGlobal: "Întreaga Flotă",
+        forecastLblHiringPlanTitle: "Plan Săptămânal de Recrutare & Angajare (Iunie 2026)",
+        forecastLblHiringPlanSub: "Tabelul următor arată numărul exact de curieri suplimentari necesari în paralel peste capacitatea istorică pentru a acoperi 100% din vârfurile cererii în fiecare săptămână.",
+        forecastThHpWeek: "Săptămână",
+        forecastThHpDates: "Interval Date",
+        forecastThHpPeak: "Vârf Curieri Necesar",
+        forecastThHpContract: "Tip Contract Vizat",
         
         // Math/Sim explanation
         simSavingsText: "Km Achitați: <strong>{mileage} EUR</strong> • Marjă Venit: <strong>{revenue} EUR</strong><br>Economii Directe Km: <strong>{savings} EUR</strong> vs contract standard.",
@@ -59146,6 +59179,13 @@ const COST_DB = {
       document.getElementById('cost-lbl-view-scope').textContent = t.costLblViewScope;
       document.getElementById('scope-btn-city').textContent = t.scopeBtnCity;
       document.getElementById('scope-btn-global').textContent = t.scopeBtnGlobal;
+
+      document.getElementById('forecast-lbl-hiring-plan-title').textContent = t.forecastLblHiringPlanTitle;
+      document.getElementById('forecast-lbl-hiring-plan-sub').textContent = t.forecastLblHiringPlanSub;
+      document.getElementById('forecast-th-hp-week').textContent = t.forecastThHpWeek;
+      document.getElementById('forecast-th-hp-dates').textContent = t.forecastThHpDates;
+      document.getElementById('forecast-th-hp-peak').textContent = t.forecastThHpPeak;
+      document.getElementById('forecast-th-hp-contract').textContent = t.forecastThHpContract;
 
       const subText = lang === 'ro' 
         ? "La nivel global, flota activează cu <strong>1.312</strong> curieri în Mai, dintre care <strong>1.227 (93.8%)</strong> lucrează sub contracte neconforme (Teilzeit și Minijob)."
@@ -59446,6 +59486,7 @@ const COST_DB = {
 
       generateStaffingRecommendation(netSurplusVal, totalShortageSlots, peakShortages, totalSurplusVolume);
       renderGrid();
+      renderHiringPlanTable();
     }
 
     function generateStaffingRecommendation(netSurplus, shortageSlots, peakShortages, totalSurplusVolume) {
@@ -59578,6 +59619,67 @@ const COST_DB = {
         });
         
         gridBody.appendChild(tr);
+      });
+    }
+
+    function renderHiringPlanTable() {
+      const hiringBody = document.getElementById('forecast-hiring-plan-body');
+      if (!hiringBody) return;
+      hiringBody.innerHTML = '';
+      
+      const cityForecasts = appData.forecasts[currentCity];
+      if (!cityForecasts || cityForecasts.length === 0) {
+        hiringBody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 20px; color: var(--text-muted);">No hiring data available for ${currentCity}.</td></tr>`;
+        return;
+      }
+      
+      const p30 = currentProductivity * 0.5;
+      
+      cityForecasts.forEach((week, wIdx) => {
+        let maxDeficitDrivers = 0;
+        
+        WEEKDAYS.forEach(day => {
+          TIME_SLOTS.forEach(slot => {
+            const demand = getForecastDemand(currentCity, wIdx, day, slot);
+            const active = getActiveDrivers(currentCity, day, slot);
+            const capacity = active * p30;
+            const deficit = demand - capacity;
+            if (deficit > 0) {
+              const driversNeeded = Math.ceil(deficit / p30);
+              if (driversNeeded > maxDeficitDrivers) {
+                maxDeficitDrivers = driversNeeded;
+              }
+            }
+          });
+        });
+        
+        const monDate = week.days['Monday'].date;
+        const sunDate = week.days['Sunday'].date;
+        const dateRangeText = currentLang === 'ro' 
+          ? `${monDate} - ${sunDate}` 
+          : `${monDate} to ${sunDate}`;
+          
+        let targetContractText = "";
+        if (currentLang === 'ro') {
+          targetContractText = ['Berlin', 'München', 'Munich', 'Frankfurt', 'Karlsruhe', 'Leipzig', 'Nürnberg'].includes(currentCity)
+            ? "Werkstudent / Sezonier pe Bicicletă (Min. 80% E-Bike)"
+            : "Werkstudent / Sezonier pe Bicicletă";
+        } else {
+          targetContractText = ['Berlin', 'München', 'Munich', 'Frankfurt', 'Karlsruhe', 'Leipzig', 'Nürnberg'].includes(currentCity)
+            ? "Werkstudent / Seasonal on e-bike (Min. 80% E-Bike)"
+            : "Werkstudent / Seasonal on Bicycle";
+        }
+        
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${currentLang === 'ro' ? 'Săptămâna' : 'Week'} ${wIdx + 1}</strong></td>
+          <td style="font-family: var(--font-mono);">${dateRangeText}</td>
+          <td style="font-family: var(--font-mono); font-weight: 600; text-align: center; color: ${maxDeficitDrivers > 0 ? 'var(--color-red-text)' : 'var(--color-green-text)'};">
+            ${maxDeficitDrivers > 0 ? '+' + maxDeficitDrivers : '0'}
+          </td>
+          <td style="font-weight: 500;">${maxDeficitDrivers > 0 ? targetContractText : (currentLang === 'ro' ? "Suficient" : "Fully Staffed")}</td>
+        `;
+        hiringBody.appendChild(tr);
       });
     }
 
