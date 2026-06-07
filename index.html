@@ -1282,6 +1282,15 @@
         <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;" id="plans-timeline-grid">
           <!-- 5 Week Cards populated dynamically in JS -->
         </div>
+
+        <!-- Non-Additive Hiring Explanation Note -->
+        <div style="background: rgba(33, 150, 243, 0.05); border: 1px solid rgba(33, 150, 243, 0.2); border-radius: 12px; padding: 16px; margin-top: 16px; display: flex; gap: 12px; align-items: flex-start;">
+          <span style="font-size: 20px; line-height: 1;">💡</span>
+          <div style="font-size: 13.5px; line-height: 1.5; color: var(--text-main);">
+            <strong style="display: block; margin-bottom: 4px; color: #1e88e5;" id="plans-lbl-note-title">How to read these hiring targets (Non-Additive):</strong>
+            <span id="plans-lbl-note-body" style="color: var(--text-muted);">These targets represent the absolute peak concurrent deficit. They are <strong>cumulative, not additive</strong>. For example, if Week 1 requires +65 couriers and Week 2 requires +100 couriers, you do <strong>not</strong> hire 165. You hire 65 in Week 1, and then hire 35 more in Week 2 to reach the target of 100 active couriers.</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -59625,6 +59634,8 @@ const COST_DB = {
         plansLblMixTitle: "🚗 Current Contract & Vehicle Structure",
         plansLblStepsTitle: "🛠️ Restructuring Action Plan (\"What to do & How to fix it\")",
         plansLblStepsSubtitle: "Follow the checklist below to optimize the fleet capacity, eliminate non-compliant contract models, and achieve the target hourly cost of ≤ 22.50 EUR/hour.",
+        plansLblNoteTitle: "💡 How to read these hiring targets (Non-Additive):",
+        plansLblNoteBody: "These numbers represent the peak concurrent deficit for each week. They are <strong>cumulative (up to), not additive (new)</strong>. For example, if Week 1 requires +65 couriers and Week 2 requires +100, you do <strong>not</strong> hire 165. You hire 65 in Week 1, and then hire 35 more in Week 2 to reach the peak of 100 active couriers. If a subsequent week requires fewer (e.g. +50), your existing pool is fully sufficient.",
         
         // Warning banner
         warningBanner: "⚠️ June Forecast not uploaded for {city}. Dashboard displays simulated forecast by scaling Berlin's profile (factor: {factor}%).",
@@ -59818,6 +59829,8 @@ const COST_DB = {
         plansLblMixTitle: "🚗 Structura Actuală a Contractelor și Vehiculelor",
         plansLblStepsTitle: "🛠️ Plan de Acțiune Restructurare (Ce trebuie făcut & Rezolvare)",
         plansLblStepsSubtitle: "Urmați lista de verificare de mai jos pentru a optimiza capacitatea flotei, a elimina modelele de contract neconforme și a atinge costul orar țintă de ≤ 22.50 EUR/oră.",
+        plansLblNoteTitle: "💡 Cum se interpretează aceste ținte de recrutare (Ne-Aditive):",
+        plansLblNoteBody: "Aceste cifre reprezintă deficitul maxim în paralel pentru fiecare săptămână. Ele sunt <strong>cumulative (până la), nu aditive (noi)</strong>. De exemplu, dacă Săptămâna 1 are un deficit de +65 curieri, iar Săptămâna 2 de +100, <strong>nu</strong> angajați 165 de oameni. Angajați 65 în Săptămâna 1, apoi încă 35 în Săptămâna 2 pentru a atinge vârful de 100 de curieri activi în paralel. Dacă o săptămână ulterioară are un deficit mai mic (de ex. +50), personalul pe care îl aveți deja este pe deplin suficient.",
         
         // Warning banner
         warningBanner: "⚠️ Prognoza pentru Iunie nu a fost încărcată pentru {city}. Tabloul de bord afișează prognoza simulată prin scalarea profilului Berlinului (factor: {factor}%).",
@@ -60234,6 +60247,10 @@ const COST_DB = {
       if (plansLblStepsTitle) plansLblStepsTitle.textContent = t.plansLblStepsTitle;
       const plansLblStepsSubtitle = document.getElementById('plans-lbl-steps-subtitle');
       if (plansLblStepsSubtitle) plansLblStepsSubtitle.textContent = t.plansLblStepsSubtitle;
+      const plansLblNoteTitle = document.getElementById('plans-lbl-note-title');
+      if (plansLblNoteTitle) plansLblNoteTitle.innerHTML = t.plansLblNoteTitle;
+      const plansLblNoteBody = document.getElementById('plans-lbl-note-body');
+      if (plansLblNoteBody) plansLblNoteBody.innerHTML = t.plansLblNoteBody;
 
       if (activeTab === 'plans') {
         renderCityPlans();
