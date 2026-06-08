@@ -1,187 +1,302 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oprisa Hub - Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Oprisa Hub - Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --sidebar-bg: #1e293b;
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
-            --danger: #ef4444;
-            --success: #10b981;
-        }
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .sidebar {
-            width: 260px;
-            background-color: var(--sidebar-bg);
-            border-right: 1px solid var(--card-border);
-            display: flex;
-            flex-direction: column;
-            padding: 20px 0;
-        }
-        .logo {
-            font-size: 20px;
-            font-weight: 700;
-            padding: 0 20px 20px;
-            border-bottom: 1px solid var(--card-border);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            text-decoration: none;
-        }
-        .nav-item {
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: 0.2s;
-            cursor: pointer;
-            border-left: 3px solid transparent;
-        }
-        .nav-item:hover, .nav-item.active {
-            color: white;
-            background: rgba(255,255,255,0.05);
-        }
-        .nav-item.active {
-            border-left-color: var(--accent);
-        }
-        .user-info {
-            margin-top: auto;
-            padding: 20px;
-            border-top: 1px solid var(--card-border);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .user-email { font-size: 14px; font-weight: 500; word-break: break-all; }
-        .user-role { font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; font-weight: 700;}
-        .logout-btn {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: none;
-            padding: 8px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Outfit', sans-serif;
-            font-size: 13px;
-        }
-        .logout-btn:hover { background: rgba(255,255,255,0.2); }
-        
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .admin-view {
-            display: none;
-            padding: 40px;
-            overflow-y: auto;
-            height: 100%;
-            box-sizing: border-box;
-        }
-        .admin-view.active { display: block; }
-        .iframe-view { display: none; height: 100%; }
-        .iframe-view.active { display: block; }
-        
-        /* Admin Table */
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(255,255,255,0.02); border-radius: 8px; overflow: hidden; border: 1px solid var(--card-border); }
-        th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--card-border); font-size: 14px; }
-        th { background: rgba(0,0,0,0.2); font-weight: 600; color: var(--text-muted); }
-        .status-badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
-        .status-pending { background: #f59e0b; color: #fff; }
-        .status-approved { background: var(--success); color: #fff; }
-        .status-rejected { background: var(--danger); color: #fff; }
-        .online-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; }
-        .online { background: var(--success); box-shadow: 0 0 8px var(--success); }
-        .offline { background: var(--text-muted); }
-        .action-btn { background: var(--accent); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-right: 6px; }
-        .reject-btn { background: transparent; border: 1px solid var(--danger); color: var(--danger); }
-    </style>
+    <link rel="stylesheet" href="assets/css/crm.css">
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo">
-            <i class="fa-solid fa-bolt" style="color: #3b82f6;"></i> OPRISA HUB
-        </div>
-        
-        <nav id="nav-menu">
-            <a class="nav-item active" data-target="admin" id="nav-admin" style="display: none;">
-                <i class="fa-solid fa-users-gear"></i> Admin Users
-            </a>
-            <a class="nav-item" data-target="crm">
-                <i class="fa-solid fa-address-card"></i> CRM & Performance
-            </a>
-            <!-- Fleetcap opens in new tab as requested -->
-            <a class="nav-item" href="fleetcap.html" target="_blank">
-                <i class="fa-solid fa-chart-pie"></i> Fleetcap Dashboard <i class="fa-solid fa-external-link-alt" style="font-size: 10px; margin-left: auto;"></i>
-            </a>
-        </nav>
-        
-        <div class="user-info">
-            <div class="user-email" id="user-email">...</div>
-            <div class="user-role" id="user-role">...</div>
-            <button class="logout-btn" id="logout-btn">Log Out</button>
-        </div>
-    </aside>
-    
-    <main class="main-content">
-        <!-- Admin View -->
-        <div class="admin-view active" id="view-admin">
-            <h2>User Management</h2>
-            <p style="color: var(--text-muted); margin-top: -10px; margin-bottom: 20px;">Manage worker access and view online presence.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Status</th>
-                        <th>Presence</th>
-                        <th>Last Seen</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="users-table-body">
-                    <!-- Loaded via JS -->
-                </tbody>
-            </table>
-        </div>
-        
-        <!-- Iframe View -->
-        <div class="iframe-view" id="view-crm">
-            <iframe src="crm.html" id="crm-iframe"></iframe>
-        </div>
-    </main>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Se încarcă baza de date (data2.csv)...</div>
+    </div>
 
-    <!-- Supabase JS -->
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="main-sidebar">
+            <div class="logo-container">
+                <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
+                <span class="logo-text">OPRISA HUB</span>
+            </div>
+            
+            <nav class="nav-menu" style="margin-top: 1rem;">
+                <a class="nav-item active" data-target="crm">
+                    <i class="fa-solid fa-address-card"></i>
+                    <span>CRM & Performance</span>
+                </a>
+                <a class="nav-item" data-target="admin" id="nav-admin" style="display: none;">
+                    <i class="fa-solid fa-users-gear"></i>
+                    <span>Admin Users</span>
+                </a>
+                <a class="nav-item" href="fleetcap.html" target="_blank">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Fleetcap Dashboard <i class="fa-solid fa-external-link-alt" style="font-size: 10px; margin-left: 5px;"></i></span>
+                </a>
+            </nav>
+            
+            <div class="user-profile-section" style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--card-border);">
+                <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary); word-break: break-all;" id="user-email">...</div>
+                <div style="font-size: 0.75rem; color: var(--color-primary); font-weight: 700; text-transform: uppercase; margin-bottom: 0.75rem;" id="user-role">...</div>
+                <button class="btn" style="width: 100%; background: #f1f5f9; color: var(--text-secondary); border: 1px solid var(--card-border);" id="logout-btn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Area -->
+        <main class="main-content" style="margin-left: 260px;">
+            
+            <!-- CRM SECTION -->
+            <div id="view-crm-section" class="main-section active">
+                <!-- Main Workspace Area -->
+        
+            
+            <!-- Page Header -->
+            <header>
+<div style="display: flex; flex-direction: column; width: 100%;">
+<div style="display: flex; justify-content: space-between; width: 100%;">
+                <div>
+                    <h1 class="page-title" data-i18n="pageTitle">Gestiune Performanță</h1>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;" data-i18n="pageSubtitle">Asistență și monitorizare manuală.</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <!-- Premium Flag Language Switcher Toggle -->
+                    <div class="lang-toggle-container">
+                        <button class="lang-btn" id="lang-btn-ro" onclick="setLanguage('ro')">
+                            <span class="flag-icon">🇷🇴</span> RO
+                        </button>
+                        <button class="lang-btn" id="lang-btn-en" onclick="setLanguage('en')">
+                            <span class="flag-icon">🇬🇧</span> EN
+                        </button>
+                    </div>
+
+                    <div style="display: flex; gap: 0.5rem; font-size: 0.8rem; background-color: rgba(255,255,255,0.02); padding: 0.5rem 1rem; border-radius: var(--border-radius-sm); border: 1px solid var(--card-border);">
+                        <span style="color: var(--text-muted)" data-i18n="activeModuleLabel">Modul Activ:</span>
+                        <span style="font-weight: 700; color: var(--color-secondary);" data-i18n="activeModuleVal">Actualizare Manuală CRM</span>
+                    </div>
+                </div>
+            </div>
+                <!-- HORIZONTAL NAV -->
+                <nav class="nav-menu" style="display: flex; flex-direction: row; gap: 1rem; margin-top: 1.5rem; width: 100%;">
+                    <a class="nav-item active" data-tab="view-overview" style="cursor: pointer; padding: 0.5rem 1rem; border-radius: 0.5rem; background: var(--card-bg); border: 1px solid var(--card-border);">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span data-i18n="tabDashboard">Dashboard</span>
+                    </a>
+                    <a class="nav-item" data-tab="view-directory" style="cursor: pointer; padding: 0.5rem 1rem; border-radius: 0.5rem; background: var(--card-bg); border: 1px solid var(--card-border);">
+                        <i class="fa-solid fa-users"></i>
+                        <span data-i18n="tabDatabase">Bază de Date</span>
+                    </a>
+                    <a class="nav-item" data-tab="view-roadmap" style="cursor: pointer; padding: 0.5rem 1rem; border-radius: 0.5rem; background: var(--card-bg); border: 1px solid var(--card-border);">
+                        <i class="fa-solid fa-user-xmark" style="color: var(--color-danger)"></i>
+                        <span style="font-weight: 700; color: #ff5252;" data-i18n="tabNonprofit">Driveri Non-Profit</span>
+                    </a>
+                </nav>
+</div>
+</header>
+
+            <!-- ================= VIEW 1: STATS & SUMMARY (PREZENTARE GENERALA) ================= -->
+            <div class="tab-view active" id="view-overview">
+                
+                <!-- Quick Stats Row -->
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span data-i18n="statTotalDrivers">Total Driveri Înregistrați</span>
+                            <i class="fa-solid fa-users text-primary"></i>
+                        </div>
+                        <div class="stat-value" id="stat-total-drivers">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span data-i18n="statNonprofit">Non-Profit</span>
+                            <i class="fa-solid fa-user-xmark" style="color: var(--color-danger)"></i>
+                        </div>
+                        <div class="stat-value" id="stat-non-profit-count" style="color: var(--color-danger);">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span data-i18n="statContacted">Contactați</span>
+                            <i class="fa-solid fa-calendar-check" style="color: var(--color-success)"></i>
+                        </div>
+                        <div class="stat-value" id="stat-contacted-count" style="color: var(--color-success);">-</div>
+                    </div>
+                </section>
+
+                <div class="dashboard-grid" style="grid-template-columns: 1fr;">
+                    
+                    <!-- Left: Traditional City Profitability Table (Instead of a chart!) -->
+                    <div class="content-card">
+                        <div class="card-title">
+                            <i class="fa-solid fa-list-check" style="color: var(--color-danger)"></i>
+                            <span data-i18n="cityTableTitle">Pierderi pe Orașe</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: -0.5rem;" data-i18n="cityTableSubtitle">Orașe cu cele mai mari pierderi cumulative.</p>
+                        
+                        <div class="table-container" style="max-height: 480px;">
+                            <table class="premium-table">
+                                <thead>
+                                    <tr>
+                                        <th data-i18n="colCity">Oraș</th>
+                                        <th data-i18n="colDriversCount">Nr. Driveri</th>
+                                        <th data-i18n="colTotalLoss">Pierderi Totale</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="city-profitability-tbody">
+                                    <!-- Populated in app.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ================= VIEW 2: MASTER DIRECTORY (ALL DRIVERS) ================= -->
+            <div class="tab-view" id="view-directory">
+                
+                <!-- Filters panel -->
+                <div class="filters-panel">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="search-driver" data-i18n="searchPlaceholder" placeholder="Caută după Nume, Partner Number (PN) sau UUID...">
+                    </div>
+                    
+                    <div class="filter-select" style="max-width: 200px;">
+                        <select id="filter-city">
+                            <option value="all" data-i18n="filterAllCities">Toate Orașele</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-select" style="max-width: 240px;">
+                        <select id="filter-profitability">
+                            <option value="all" data-i18n="filterAllStatuses">Toate Statusurile</option>
+                            <option value="Profitabil" data-i18n="filterProfitableOnly">Doar Profitabili</option>
+                            <option value="Pierdere" data-i18n="filterLossOnly">Doar Pierdere</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Column Selector Panel -->
+                <div class="content-card" style="margin-top: -0.5rem; margin-bottom: 1.25rem; padding: 0.85rem 1.15rem; background-color: #ffffff; border: 1px solid var(--card-border);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;" onclick="toggleColumnsPanel()">
+                        <span style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.45rem;">
+                            <i class="fa-solid fa-table-columns" style="color: var(--color-primary)"></i> <span data-i18n="colSelectorTitle">Selectare Coloane Bază de Date</span>
+                        </span>
+                        <span id="columns-toggle-chevron" style="font-size: 0.8rem; color: var(--text-secondary); transition: transform 0.2s; transform: rotate(180deg);"><i class="fa-solid fa-chevron-down"></i></span>
+                    </div>
+                    <div id="columns-checkbox-container" style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.75rem; border-top: 1px solid var(--card-border); padding-top: 0.75rem;">
+                        <!-- Generated Dynamically in app.js -->
+                    </div>
+                </div>
+
+                <!-- Full-Width Driver Table -->
+                <div class="content-card" style="padding: 1rem; overflow: hidden; margin-bottom: 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0.75rem;">
+                        <span class="card-title" id="filter-count">Afișare: - din - driveri</span>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-solid fa-circle-info"></i> <span data-i18n="rowClickInfo">Faceți clic pe orice rând pentru a deschide profilul special în ecran complet</span></span>
+                    </div>
+                    <div class="table-container" style="max-height: 520px;">
+                        <table class="premium-table">
+                            <thead>
+                                <tr id="drivers-table-header-row">
+                                    <!-- Populated Dynamically in app.js -->
+                                </tr>
+                            </thead>
+                            <tbody id="drivers-table-body">
+                                <!-- Populated in app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= VIEW 3: NON-PROFIT DIRECTORY QUEUE ================= -->
+            <div class="tab-view" id="view-roadmap">
+                
+                <div class="custom-alert info" style="margin-bottom: 1.5rem;">
+                    <i class="fa-solid fa-circle-info" style="font-size: 1.2rem"></i>
+                    <div id="t-guide-desc" data-i18n="guideDesc">
+                        <strong>Queue Asistență Non-Profit:</strong> Această secțiune afișează exclusiv driverii aflați în <em>Pierdere</em> conform bazei de date. Faceți clic pe un card pentru a deschide profilul special în ecran complet.
+                    </div>
+                </div>
+
+                <div class="content-card" style="gap: 1rem; margin-bottom: 0; min-height: 480px; overflow-y: auto;">
+                    <div class="card-title">
+                        <i class="fa-solid fa-address-book" style="color: var(--color-secondary)"></i>
+                        <span data-i18n="lossDriversTitle">Driveri în Pierdere</span>
+                    </div>
+
+                    <!-- Sub-tabs for categorization inside Non-Profit View -->
+                    <div class="roadmap-subtabs" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <button class="subtab-btn active" id="subtab-pending" onclick="setRoadmapSubtab('pending')" data-i18n="subtabPending">De Contactat</button>
+                        <button class="subtab-btn" id="subtab-progress" onclick="setRoadmapSubtab('progress')" data-i18n="subtabProgress">Acceptat</button>
+                        <button class="subtab-btn" id="subtab-no-answer" onclick="setRoadmapSubtab('no-answer')" data-i18n="subtabNoAnswer">Fără răspuns</button>
+                        <button class="subtab-btn" id="subtab-closed" onclick="setRoadmapSubtab('closed')" data-i18n="subtabClosed">Refuzat</button>
+                        <button class="subtab-btn" id="subtab-completed" onclick="setRoadmapSubtab('completed')" data-i18n="subtabCompleted">Optimizat</button>
+                        <button class="subtab-btn" id="subtab-recontact" onclick="setRoadmapSubtab('recontact')" data-i18n="subtabRecontact">De recontactat</button>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.25rem;" id="roadmap-drivers-list">
+                        <!-- Populated in app.js -->
+                    </div>
+                </div>
+            </div>
+
+        
+            </div>
+
+            <!-- ADMIN SECTION -->
+            <div id="view-admin-section" class="main-section" style="display: none;">
+                <header style="margin-bottom: 1.75rem; display: flex; flex-direction: column; width: 100%; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+                    <div>
+                        <h1 class="page-title">Admin Users</h1>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Manage worker access and view online presence.</p>
+                    </div>
+                </header>
+
+                <div class="content-card" style="padding: 1rem; overflow: hidden;">
+                    <div class="table-container" style="max-height: 520px;">
+                        <table class="premium-table">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Presence</th>
+                                    <th>Last Seen</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table-body">
+                                <!-- Loaded via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- FULL-SCREEN GLASSMORPHIC PROFILE MODAL -->
+    <div class="modal-overlay" id="driver-profile-modal">
+        <div class="modal-content">
+            <button class="close-modal-btn" id="close-profile-modal-btn" onclick="closeProfileModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-profile-grid" id="modal-profile-content">
+                <!-- Injected dynamically in app.js -->
+            </div>
+        </div>
+    </div>
+
+    
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/crm.js"></script>
 </body>
 </html>

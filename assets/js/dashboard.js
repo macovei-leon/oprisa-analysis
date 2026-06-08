@@ -13,8 +13,8 @@ const userRoleEl = document.getElementById('user-role');
 const logoutBtn = document.getElementById('logout-btn');
 const navAdmin = document.getElementById('nav-admin');
 const navItems = document.querySelectorAll('.nav-item[data-target]');
-const viewAdmin = document.getElementById('view-admin');
-const viewCrm = document.getElementById('view-crm');
+const viewAdmin = document.getElementById('view-admin-section');
+const viewCrm = document.getElementById('view-crm-section');
 const usersTableBody = document.getElementById('users-table-body');
 
 // Navigation
@@ -26,12 +26,12 @@ navItems.forEach(item => {
         
         const target = item.getAttribute('data-target');
         if (target === 'admin') {
-            viewAdmin.classList.add('active');
-            viewCrm.classList.remove('active');
+            viewAdmin.style.display = 'block';
+            viewCrm.style.display = 'none';
             loadAdminUsers(); // Refresh
         } else if (target === 'crm') {
-            viewAdmin.classList.remove('active');
-            viewCrm.classList.add('active');
+            viewAdmin.style.display = 'none';
+            viewCrm.style.display = 'block';
         }
     });
 });

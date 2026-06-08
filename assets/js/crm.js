@@ -273,7 +273,7 @@ const i18n = {
 
 // Tab View Control
 function initTabs() {
-    const navItems = document.querySelectorAll('.nav-item');
+    const navItems = document.querySelectorAll('.nav-item[data-tab]');
     const tabViews = document.querySelectorAll('.tab-view');
 
     navItems.forEach(item => {
