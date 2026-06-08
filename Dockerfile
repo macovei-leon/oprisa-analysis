@@ -5,7 +5,8 @@ FROM nginx:alpine
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Copy the HTML frontend and preprocessed JSON dataset to the Nginx serving folder
-COPY index.html /usr/share/nginx/html/
+COPY *.html /usr/share/nginx/html/
+COPY assets/ /usr/share/nginx/html/assets/
 COPY dashboard_data.json /usr/share/nginx/html/
 
 # Expose port 8057 as requested
