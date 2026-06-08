@@ -1,0 +1,14 @@
+    const CITY_PLANS = {
+  "Augsburg": {
+    "hours": 5117.0,
+    "cost": 26.33,
+    "tph": 1.79,
+    "kph": 10.38,
+    "structure": [
+      {
+        "ro": "`Minijob` + `Bicycle`: 116.0 h (2.3%) | Cost: 24.81 EUR/h | TPH: 1.98 | KPH: 5.87",
+        "en": "`Minijob` + `Bicycle`: 116.0 h (2.3%) | Cost: 24.81 EUR/h | TPH: 1.98 | KPH: 5.87"
+      },
+      {
+        "ro": "`Minijob` + `Car`: 418.0 h (8.2%) | Cost: 27.92 EUR/h | TPH: 1.82 | KPH: 10.21",
+        "en": "`Minijob` + `Car`: 418.0 h (8.2%) | Cost: 27.92 EUR/h | TPH: 1.82 | KPH: 10.21"

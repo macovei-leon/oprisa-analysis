@@ -1,0 +1,40 @@
+
+      if (!cityData) return;
+
+      const actions = [];
+      const hasMinijob = cityData.mix.some(m => m.contract.includes('Minijob'));
+      const hasTZ = cityData.mix.some(m => m.contract.includes('TZ'));
+      const hasCar = cityData.mix.some(m => m.vehicle === 'Car');
+
+      // Tailor steps
+      if (hasMinijob) {
+        actions.push(currentLang === 'ro' 
+          ? "<strong>Eliminarea Minijobs:</strong> Concedierea sau conversia tuturor angajaților cu Minijob (care costă > 25 EUR/h) către Werkstudent pe bicicletă." 
+          : "<strong>Eliminate Minijobs:</strong> Firing or converting all Minijob couriers (costing > 25 EUR/h) to Werkstudent on Bicycle.");
+      } else {
+        actions.push(currentLang === 'ro'
+          ? "<strong>Interzicerea contractelor Minijob:</strong> Menținerea politicii de 0 contracte Minijob active."
+          : "<strong>Restrict Minijobs:</strong> Maintain the current policy of 0 active Minijob contracts.");
+      }
+
+      if (hasTZ) {
+        actions.push(currentLang === 'ro'
+          ? "<strong>Restructurarea Teilzeit (TZ):</strong> Înghețarea recrutării TZ. Angajații TZ existenți pe mașină trebuie transferați pe Werkstudent pe bicicletă sau supuși politicii de căpuire a kilometrilor (Plan B)."
+          : "<strong>Teilzeit (TZ) Restructuring:</strong> Freeze TZ hiring. Transition existing TZ car couriers to Werkstudent on Bicycle or apply strict mileage capping (Plan B).");
+      }
+
+      const isCongested = ['Frankfurt am Main', 'Munich', 'Berlin', 'Cologne', 'Dusseldorf', 'Stuttgart'].includes(cityData.salaries_name);
+      if (isCongested) {
+        actions.push(currentLang === 'ro'
+          ? `<strong>Tranziție masivă la Biciclete (congestie urbană):</strong> Deoarece ${currentCity} este extrem de aglomerat, viteza mașinilor este redusă iar timpul de parcare este mare. Se recomandă o flotă de <strong>80% biciclete electrice / 20% mașini</strong>.`
+          : `<strong>Bicycle Shift (Congested center):</strong> Since ${currentCity} suffers from heavy traffic and parking delays, e-bikes are faster. Target a ratio of <strong>80% e-bikes / 20% cars</strong>.`);
+      } else {
+        actions.push(currentLang === 'ro'
+          ? "<strong>Optimizare flotă:</strong> Menținerea mașinilor doar sub contracte Werkstudent cu aplicarea strictă a limitei de kilometri (Plan B) și limitarea geografică a curselor."
+          : "<strong>Fleet optimization:</strong> Keep cars only for Werkstudent contracts with strict mileage capping (Plan B), and restrict car shifts to suburb deliveries.");
+      }
+
+      // Summer peak volume check
+      // We know from our forecast totals script:
+      let growthText = "";
+      if (currentCity === 'Berlin') growthText = "+61.7% (W1: 8.5k -> W5: 13.8k)";

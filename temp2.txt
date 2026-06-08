@@ -1,0 +1,40 @@
+      generateStaffingRecommendation(netSurplusVal, totalShortageSlots, peakShortages, totalSurplusVolume);
+      renderGrid();
+      renderHiringPlanTable();
+      if (activeTab === 'plans') {
+        renderCityPlans();
+      }
+    }
+
+    function renderCityPlans() {
+      const cityData = CITY_PLANS[currentCity];
+      if (!cityData) {
+        document.getElementById('plans-val-active-hours').textContent = '0 h';
+        document.getElementById('plans-val-tph').textContent = '0.00';
+        document.getElementById('plans-val-kph').textContent = '0.00 km/h';
+        document.getElementById('plans-val-current-cost-label').textContent = '0.00 EUR/h';
+        document.getElementById('plans-val-savings-amt').textContent = '+0 EUR';
+        document.getElementById('plans-bar-cost-fill').style.width = '0%';
+        document.getElementById('plans-lbl-cost-overflow').textContent = 'No data';
+        document.getElementById('plans-mix-list').innerHTML = '<div style="color: var(--text-muted); font-size: 13.5px;">No plan data available for this city.</div>';
+        document.getElementById('plans-steps-container').innerHTML = '';
+        document.getElementById('plans-timeline-grid').innerHTML = '';
+        return;
+      }
+
+      // 1. Populate Financial Target & Impact
+      const cost = cityData.cost;
+      const hours = cityData.hours;
+      const targetLimit = 22.50;
+      const overflow = cost - targetLimit;
+      const monthlySavings = Math.max(0, overflow * hours);
+
+      document.getElementById('plans-val-current-cost-label').textContent = `${cost.toFixed(2)} EUR/h`;
+      
+      const fillBar = document.getElementById('plans-bar-cost-fill');
+      const overflowLabel = document.getElementById('plans-lbl-cost-overflow');
+      
+      if (cost <= targetLimit) {
+        fillBar.style.width = '100%';
+        fillBar.style.background = 'var(--color-green-border)';
+        overflowLabel.textContent = currentLang === 'ro' ? 'În limita conformă' : 'Within compliant limit';
