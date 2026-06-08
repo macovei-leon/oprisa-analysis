@@ -1294,40 +1294,39 @@
       </div>
     </div>
 
-    <!-- Row 2: Contract Structure Mix & Action Checklist -->
-    <div class="cost-tab-layout">
-      <!-- Left Column: Current Structure Mix & Actionable Reductions -->
-      <div style="flex: 1; display: flex; flex-direction: column; gap: 24px;">
-        <div class="metric-card" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column;">
-          <div class="checklist-title" id="plans-lbl-mix-title" style="margin-bottom: 16px; font-size: 18px; font-weight: 700; color: var(--text-main); border-bottom: 2px solid var(--accent-color); padding-bottom: 8px;">🚗 Current Contract & Vehicle Structure</div>
-          <div id="plans-mix-list" style="display: flex; flex-direction: column; gap: 12px;">
-            <!-- Filled dynamically in JS -->
-          </div>
+    <!-- Layout: Stacked Full Width Rows -->
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      
+      <!-- Current Contract Mix -->
+      <div class="metric-card" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
+        <div class="checklist-title" id="plans-lbl-mix-title" style="margin-bottom: 16px; font-size: 18px; font-weight: 700; color: var(--text-main); border-bottom: 2px solid var(--accent-color); padding-bottom: 8px;">🚗 Current Contract & Vehicle Structure</div>
+        <div id="plans-mix-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
+          <!-- Filled dynamically in JS -->
         </div>
       </div>
 
-      <!-- Right Column: Restructuring Action Plan Checklist -->
-      <div class="metric-card" style="flex: 1.2; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
+      <!-- Restructuring Action Plan -->
+      <div class="metric-card" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
         <div class="checklist-title" id="plans-lbl-steps-title" style="margin-bottom: 16px; font-size: 18px; font-weight: 700; color: var(--text-main); border-bottom: 2px solid var(--accent-color); padding-bottom: 8px;">🛠️ Restructuring Action Plan ("What to do & How to fix it")</div>
         <div style="margin-bottom: 16px; font-size: 13.5px; color: var(--text-muted); line-height: 1.5;" id="plans-lbl-steps-subtitle">
           Follow the checklist below to optimize the fleet capacity, eliminate non-compliant contract models, and achieve the target hourly cost of ≤ 22.50 EUR/hour.
         </div>
-        <div class="checklist-container" id="plans-steps-container" style="border: none; padding: 0; background: transparent; display: flex; flex-direction: column; gap: 16px;">
+        <div class="checklist-container" id="plans-steps-container" style="border: none; padding: 0; background: transparent; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 16px;">
           <!-- Filled dynamically in JS -->
         </div>
       </div>
-    </div>
-    <!-- Row 3: Actionable Courier Reductions (Moved from left column to be big and centered) -->
-    <div style="margin-top: 24px; display: flex; justify-content: center;">
-      <div class="metric-card" style="width: 100%; max-width: 1200px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; border-top: 4px solid var(--color-red-border);">
-        <div class="checklist-title" id="plans-lbl-reductions-title" style="margin-bottom: 12px; font-size: 22px; font-weight: 700; color: var(--color-red-text); border-bottom: 2px solid var(--color-red-border); padding-bottom: 8px; text-align: center;">🛑 Actionable Courier Reductions & Transitions</div>
-        <div style="font-size: 15px; color: var(--text-muted); margin-bottom: 24px; text-align: center;" id="plans-lbl-reductions-sub">
+
+      <!-- Actionable Reductions -->
+      <div class="metric-card" style="background: var(--card-bg); border: 1px solid var(--color-red-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(220, 38, 38, 0.1); border-left: 6px solid var(--color-red-border);">
+        <div class="checklist-title" id="plans-lbl-reductions-title" style="margin-bottom: 12px; font-size: 22px; font-weight: 800; color: var(--color-red-text); border-bottom: 2px solid rgba(220, 38, 38, 0.2); padding-bottom: 8px;">🛑 Actionable Courier Reductions & Transitions</div>
+        <div style="font-size: 15px; color: var(--text-muted); margin-bottom: 24px;" id="plans-lbl-reductions-sub">
           Dismiss inefficient contracts and transition drivers to E-bikes to achieve cost compliance.
         </div>
-        <div id="plans-reductions-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; justify-content: center;">
+        <div id="plans-reductions-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
           <!-- Filled dynamically in JS -->
         </div>
       </div>
+
     </div>
   </div>
 
@@ -60750,6 +60749,7 @@ const COST_DB = {
           } else {
             nonCompliantMixes.forEach(item => {
               const drivers = item.drivers;
+              const driversBig = `<span style="font-size: 32px; font-weight: 900; color: #e11d48; margin: 0 8px; vertical-align: middle; background: #ffe4e6; padding: 2px 12px; border-radius: 8px; display: inline-block; box-shadow: 0 2px 4px rgba(225, 29, 72, 0.2);">${drivers}</span>`;
               const contract = item.contract;
               const vehicle = item.vehicle === 'Bicycle' ? (currentLang === 'ro' ? 'Bicicletă' : 'Bicycle') : (currentLang === 'ro' ? 'Mașină' : 'Car');
               
@@ -60757,21 +60757,21 @@ const COST_DB = {
               let isCrit = false;
               
               if (contract.includes('Minijob')) {
-                message = t.plansReductionsMinijob.replace('{drivers}', drivers).replace('{vehicle}', vehicle);
+                message = t.plansReductionsMinijob.replace('{drivers}', driversBig).replace('{vehicle}', vehicle);
                 isCrit = true;
               } else if (contract.includes('Teilzeit') || contract.includes('TZ')) {
                 if (item.vehicle === 'Car') {
-                  message = t.plansReductionsTZCar.replace('{drivers}', drivers);
+                  message = t.plansReductionsTZCar.replace('{drivers}', driversBig);
                   isCrit = true;
                 } else {
-                  message = t.plansReductionsTZBike.replace('{drivers}', drivers).replace('{vehicle}', vehicle);
+                  message = t.plansReductionsTZBike.replace('{drivers}', driversBig).replace('{vehicle}', vehicle);
                   isCrit = false;
                 }
               } else if (contract.includes('Werkstudent') && item.vehicle === 'Car') {
-                message = t.plansReductionsWSCar.replace('{drivers}', drivers);
+                message = t.plansReductionsWSCar.replace('{drivers}', driversBig);
                 isCrit = false;
               } else if (contract.includes('Unknown')) {
-                message = t.plansReductionsUnknown.replace('{drivers}', drivers);
+                message = t.plansReductionsUnknown.replace('{drivers}', driversBig);
                 isCrit = true;
               } else {
                 message = `<strong>Restructure ${contract} (${vehicle})</strong>: Restructure <strong>${drivers}</strong> active drivers (hourly cost: ${item.cost_hour.toFixed(2)} EUR/h exceeds limit).`;
