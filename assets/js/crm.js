@@ -383,27 +383,32 @@ function getDriverState(uuid, defaultProfitReal) {
     return state;
 }
 
+
 // Save Driver State to server API
-function saveDriverState(uuid, state) {
+async function saveDriverState(uuid, state) {
     // Update shared client cache immediately
     sharedCrmStates[uuid] = state;
 
-    // Asynchronously save state to server CSV database
-    fetch('/api/crm-state', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ uuid, state })
-    })
-    .then(res => {
-        if (!res.ok) {
-            console.warn('Server API crm-state returned non-ok response status:', res.status);
+    try {
+        if (typeof supabaseClient === 'undefined') {
+            console.warn("Supabase client is not available.");
+            return;
         }
-    })
-    .catch(err => {
-        console.error('Failed to post crm-state update to server:', err);
-    });
+        
+        const payload = {
+            uuid: uuid,
+            work_started: state.workStarted || false,
+            schedule_acceptance: state.scheduleAcceptance || 'pending',
+            step3_outcome: state.step3Outcome || 'undefined',
+            notes: state.notes || ''
+        };
+        
+        const { error } = await supabaseClient.from('crm_states').upsert(payload, { onConflict: 'uuid' });
+        if (error) throw error;
+        
+    } catch(err) {
+        console.error('Failed to post crm-state update to Supabase:', err);
+    }
 }
 
 // Load and Parse data2.csv and shared CRM state concurrently
@@ -418,24 +423,40 @@ async function loadDriverData() {
             }
         }
 
-        const [csvRes, crmRes] = await Promise.all([
-            fetch('assets/data/data2.csv'),
-            fetch('/api/crm-state').catch(err => {
-                console.warn('Server CRM API is currently unreachable.', err);
-                return null;
-            })
-        ]);
+        let csvRes = null;
+        let crmData = null;
 
-        if (!csvRes.ok) {
-            throw new Error(`HTTP error! status: ${csvRes.status}`);
+        try {
+            csvRes = await fetch('assets/data/data2.csv');
+            if (!csvRes.ok) throw new Error(`HTTP error! status: ${csvRes.status}`);
+            
+            if (typeof supabaseClient !== 'undefined') {
+                const { data, error } = await supabaseClient.from('crm_states').select('*');
+                if (!error && data) {
+                    crmData = data;
+                }
+            }
+        } catch (e) {
+            console.warn("Error fetching data:", e);
         }
+
         const text = await csvRes.text();
         const { rows } = parseCSV(text);
         
-        if (crmRes && crmRes.ok) {
+        if (crmData) {
             try {
-                sharedCrmStates = await crmRes.json();
-                console.log('Successfully synchronized shared CRM states from server.');
+                // transform array back into sharedCrmStates dictionary
+                let loadedStates = {};
+                crmData.forEach(row => {
+                    loadedStates[row.uuid] = {
+                        workStarted: row.work_started,
+                        scheduleAcceptance: row.schedule_acceptance || 'pending',
+                        step3Outcome: row.step3_outcome === 'undefined' ? null : row.step3_outcome,
+                        notes: row.notes || ''
+                    };
+                });
+                sharedCrmStates = loadedStates;
+                console.log('Successfully synchronized shared CRM states from Supabase.');
             } catch (e) {
                 console.error('Failed to parse synchronized CRM states:', e);
             }
