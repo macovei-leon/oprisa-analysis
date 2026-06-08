@@ -34,7 +34,8 @@ CITY_METADATA = {
     'Worms': ['worms'],
     'Ulm': ['ulm'],
     'Regensburg': ['regensburg'],
-    'Gütersloh': ['gütersloh', 'guetersloh']
+    'Gütersloh': ['gütersloh', 'guetersloh'],
+    'Saarbrücken': ['saarbrücken', 'saarbruecken', 'saarbrucken']
 }
 
 def get_city_name_from_filename(filename):
@@ -52,6 +53,8 @@ def get_city_name_from_filename(filename):
         return 'Gütersloh'
     if base == 'dusseldorf':
         return 'Düsseldorf'
+    if base == 'saarbruecken':
+        return 'Saarbrücken'
     
     # Capitalize others
     for city in CITY_METADATA.keys():
