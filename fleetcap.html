@@ -1337,22 +1337,22 @@
     const CITY_PLANS = {
   
   "Saarbrücken": {
-    "hours": 120.0,
-    "cost": 28.34,
-    "tph": 1.5,
-    "kph": 11.2,
+    "hours": 26.58,
+    "cost": 24.27,
+    "tph": 2.75,
+    "kph": 10.31,
     "structure": [
       {
-        "ro": "`Minijob` + `Car`: 120.0 h (100%) | Cost: 28.34 EUR/h | TPH: 1.5 | KPH: 11.2",
-        "en": "`Minijob` + `Car`: 120.0 h (100%) | Cost: 28.34 EUR/h | TPH: 1.5 | KPH: 11.2"
+        "ro": "`Minijob` + `Car`: 26.58 h (100%) | Cost: 24.27 EUR/h | TPH: 2.75 | KPH: 10.31",
+        "en": "`Minijob` + `Car`: 26.58 h (100%) | Cost: 24.27 EUR/h | TPH: 2.75 | KPH: 10.31"
       }
     ],
     "steps": [
       {
         "title_ro": "Eliminarea Minijobs (Mașină)",
-        "desc_ro": "Renunțarea la contractele de tip Minijob pe mașină (care depășesc 28 EUR/h).",
+        "desc_ro": "Renunțarea la contractele de tip Minijob pe mașină. Costul orar de 24.27 EUR depășește limita țintă.",
         "title_en": "Eliminate Minijobs (Car)",
-        "desc_en": "Phase out Minijob car contracts (>28 EUR/h) due to high tax rates and vehicle costs."
+        "desc_en": "Phase out Minijob car contracts. The hourly cost of 24.27 EUR exceeds the target limit."
       }
     ]
   },
@@ -2243,25 +2243,25 @@ const COST_DB = {
 
   "Saarbrücken": {
     "salaries_name": "Saarbrücken",
-    "total_hours": 120.0,
-    "avg_cost_hour": 28.34,
-    "tph": 1.5,
-    "kph": 11.2,
-    "total_fare": 2000.0,
-    "total_mileage": 1000.0,
+    "total_hours": 26.58,
+    "avg_cost_hour": 24.27,
+    "tph": 2.75,
+    "kph": 10.31,
+    "total_fare": 784.54,
+    "total_mileage": 274.03,
     "driver_weeks": 4,
-    "driver_weeks_data": [[500.0, 250.0], [500.0, 250.0], [500.0, 250.0], [500.0, 250.0]],
+    "driver_weeks_data": [[220.66, 76.67], [304.75, 110.97], [28.89, 10.67], [230.24, 75.73]],
     "mix": [
       {
         "contract": "Minijob",
         "vehicle": "Car",
-        "hours": 120.0,
-        "trips": 180,
-        "tph": 1.5,
-        "kph": 11.2,
-        "km": 1344.0,
+        "hours": 26.58,
+        "trips": 73,
+        "tph": 2.75,
+        "kph": 10.31,
+        "km": 274.03,
         "tax_rate": 52.39,
-        "cost_hr": 28.34,
+        "cost_hr": 24.27,
         "compliance": "Non-Compliant",
         "action": "Complete Elimination"
       }
