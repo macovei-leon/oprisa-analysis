@@ -21,38 +21,15 @@
 
     <div class="app-container">
         
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <div class="logo-container">
-                <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
-                <span class="logo-text" data-i18n="logoText">OPRISA GMBH</span>
-            </div>
-            
-            <nav class="nav-menu">
-                <a class="nav-item active" data-tab="view-overview">
-                    <i class="fa-solid fa-chart-pie"></i>
-                    <span data-i18n="tabDashboard">Dashboard</span>
-                </a>
-                <a class="nav-item" data-tab="view-directory">
-                    <i class="fa-solid fa-users"></i>
-                    <span data-i18n="tabDatabase">Bază de Date</span>
-                </a>
-                <a class="nav-item" data-tab="view-roadmap">
-                    <i class="fa-solid fa-user-xmark" style="color: var(--color-danger)"></i>
-                    <span style="font-weight: 700; color: #ff5252;" data-i18n="tabNonprofit">Driveri Non-Profit</span>
-                </a>
-            </nav>
-            
-            <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; color: var(--text-muted); text-align: center;">
-                <span data-i18n="footerText">© 2026 Oprisa Logistics</span>
-            </div>
-        </aside>
+        
 
         <!-- Main Workspace Area -->
         <main class="main-content">
             
             <!-- Page Header -->
             <header>
+<div style="display: flex; flex-direction: column; width: 100%;">
+<div style="display: flex; justify-content: space-between; width: 100%;">
                 <div>
                     <h1 class="page-title" data-i18n="pageTitle">Gestiune Performanță</h1>
                     <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;" data-i18n="pageSubtitle">Asistență și monitorizare manuală.</p>
@@ -73,7 +50,24 @@
                         <span style="font-weight: 700; color: var(--color-secondary);" data-i18n="activeModuleVal">Actualizare Manuală CRM</span>
                     </div>
                 </div>
-            </header>
+            </div>
+                <!-- HORIZONTAL NAV -->
+                <nav class="nav-menu" style="display: flex; flex-direction: row; gap: 1rem; margin-top: 1.5rem; width: 100%;">
+                    <a class="nav-item active" data-tab="view-overview" style="cursor: pointer; padding: 0.5rem 1rem; border-radius: 0.5rem; background: var(--card-bg); border: 1px solid var(--card-border);">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span data-i18n="tabDashboard">Dashboard</span>
+                    </a>
+                    <a class="nav-item" data-tab="view-directory" style="cursor: pointer; padding: 0.5rem 1rem; border-radius: 0.5rem; background: var(--card-bg); border: 1px solid var(--card-border);">
+                        <i class="fa-solid fa-users"></i>
+                        <span data-i18n="tabDatabase">Bază de Date</span>
+                    </a>
+                    <a class="nav-item" data-tab="view-roadmap" style="cursor: pointer; padding: 0.5rem 1rem; border-radius: 0.5rem; background: var(--card-bg); border: 1px solid var(--card-border);">
+                        <i class="fa-solid fa-user-xmark" style="color: var(--color-danger)"></i>
+                        <span style="font-weight: 700; color: #ff5252;" data-i18n="tabNonprofit">Driveri Non-Profit</span>
+                    </a>
+                </nav>
+</div>
+</header>
 
             <!-- ================= VIEW 1: STATS & SUMMARY (PREZENTARE GENERALA) ================= -->
             <div class="tab-view active" id="view-overview">

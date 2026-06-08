@@ -124,10 +124,10 @@ body {
 
 .main-content {
     flex: 1;
-    margin-left: 260px;
+    margin-left: 0;
     padding: 2rem 2.25rem;
     min-height: 100vh;
-    min-width: 0; /* Solves layout expansion overflow */
+    min-width: 0;
 }
 
 /* Header */
